@@ -1,6 +1,6 @@
 export const products = [
     {
-        id: "1",
+        _id: "1",
         name: "Carvin",
         model: "LB-75",
         price: 25999,
@@ -19,7 +19,7 @@ export const products = [
         rating: 5
     },
     {
-        id: "2",
+        _id: "2",
         name: "Warwick",
         model: "Streamer",
         price: 53999,
@@ -38,7 +38,7 @@ export const products = [
         rating: 5
     },
     {
-        id: "3",
+        _id: "3",
         name: "Fender",
         model: "Stratocaster",
         price: 65999,
@@ -57,7 +57,7 @@ export const products = [
         rating: 5
     },
     {
-        id: "4",
+        _id: "4",
         name: "Gibson",
         model: "Les Paul",
         price: 66999,
@@ -76,7 +76,7 @@ export const products = [
         rating: 5
     },
     {
-        id: "5",
+        _id: "5",
         name: "Yamaha",
         model: "Rock Bit",
         price: 299999,
@@ -95,7 +95,7 @@ export const products = [
         rating: 5
     },
     {
-        id: "6",
+        _id: "6",
         name: "Tama",
         model: "Swing Star",
         price: 223999,
@@ -114,7 +114,7 @@ export const products = [
         rating: 4
     },
     {
-        id: "7",
+        _id: "7",
         name: "Shure",
         model: "SM-58",
         price: 1999,
@@ -133,7 +133,7 @@ export const products = [
         rating: 4
     },
     {
-        id: "8",
+        _id: "8",
         name: "Klotz",
         model: "K-101",
         price: 999,
