@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import ProtectedRoute from "./components/common/protectedRoute";
 import LogOut from "./layouts/logOut";
 import AppLoader from "./components/ui/hoc/appLoader";
+import ProductsPage from "./components/page/productsPage";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                     />
                     <Route path="/login/:type?" component={Login} />
                     <Route path="/logout" component={LogOut} />
+                    <Route path="/products" component={ProductsPage} />
                     <Route path="/" exact component={Main} />
                     <Redirect to="/" />
                 </Switch>
