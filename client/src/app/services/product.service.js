@@ -4,8 +4,8 @@ const productEndpoint = "product/";
 
 const productService = {
     get: async () => {
-        const req = await httpService.get(productEndpoint);
-        return req.data;
+        const { data } = await httpService.get(productEndpoint);
+        return data;
     }
 };
 export default productService;

@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { products } from "../../../api/fake.api/product";
-// import PropTypes from "prop-types";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import productService from "../../../services/product.service";
 
 const SingleProductPage = () => {
     const { id } = useParams();
+    console.log(id);
+
     const [product, setProduct] = useState();
     useEffect(() => {
-        setProduct(products.find(p => p._id === id));
-}, []);
-    console.log(product);
-    console.log(setProduct);
-    console.log(id);
-    return (
-        <div>
-            <h1>page {product.name} </h1>
-        </div>
-    );
+        productService.get().then((data) => setProduct(data));
+    }, []);
+    const one = product.content.map((elem) => { return elem.name; });
+    console.log(one);
+    if (product) {
+        return (
+            <div>
+                <h1>page </h1>
+            </div>
+        );
+    } else {
+        return <h1>Loading...</h1>;
+    }
 };
-
-// SingleProductPage.propTypes = {
-//     prodId: PropTypes.string.isRequired
-// };
 
 export default SingleProductPage;

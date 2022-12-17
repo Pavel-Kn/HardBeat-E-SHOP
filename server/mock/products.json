@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Carvin",
+    "model": "LB-75",
+    "category": "Бас гитара",
+    "price": 25999,
+    "image": "link",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 3,
+    "rating": 5
+  },
+  {
+    "name": "Warwick",
+    "model": "Streamer",
+    "category": "Бас гитара",
+    "price": 53999,
+    "image": "link",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 5,
+    "rating": 5
+  },
+  {
+    "name": "Fender",
+    "model": "Stratocaster",
+    "category": "Электро гитара",
+    "price": 65999,
+    "image": "link",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 7,
+    "rating": 5
+  },
+  {
+    "name": "Gibson",
+    "model": "Les Paul",
+    "category": "Электро гитара",
+    "price": 66999,
+    "image": "link",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 9,
+    "rating": 5
+  },
+  {
+    "name": "Yamaha",
+    "model": "Rock Bit",
+    "category": "Барабаны",
+    "price": 299999,
+    "image": "link",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 1,
+    "rating": 5
+  },
+  {
+    "name": "Tama",
+    "model": "Swing Star",
+    "category": "Барабаны",
+    "price": 223999,
+    "image": "link",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 2,
+    "rating": 4
+  },
+  {
+    "name": "Shure",
+    "model": "SM-58",
+    "category": "Микрофоны",
+    "price": 1999,
+    "image": "link",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 10,
+    "rating": 4
+  },
+  {
+    "name": "Sennheiser",
+    "model": "E-935",
+    "category": "Микрофоны",
+    "price": 2999,
+    "image": "link",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 39,
+    "rating": 5
+  }
+]
