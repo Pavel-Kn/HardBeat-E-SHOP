@@ -54,9 +54,9 @@ export const loadProductsList = () => async (dispatch, getState) => {
 export const getProducts = () => (state) => state.product.entities;
 export const getProductsLoadingStatus = () => (state) =>
     state.product.isLoading;
-export const getProductById = (id) => (state) => {
+export const getProductById = (prodId) => (state) => {
     if (state.product.entities) {
-        return state.product.entities.find((p) => p._id === id);
+        return state.product.entities.find((p) => p._id === prodId);
     }
 };
 
@@ -65,7 +65,7 @@ export const updateProduct = (payload) => async (dispatch, getState) => {
     try {
         const { content } = await productService.update(payload);
         dispatch(productUpdateSuccessed(content));
-        history.push(`/product/${content._id}`);
+        history.push(`/products/${content._id}`);
     } catch (error) {
         dispatch(productUpdateFailed(error.message));
     }

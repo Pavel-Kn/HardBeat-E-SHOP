@@ -2,10 +2,9 @@ import React from "react";
 import propTypes from "prop-types";
 
 const SingleProductPage = ({ product }) => {
-    console.log(product);
     return (
         <div>
-            <h1>SingleProductPage</h1>
+            <h1>SingleProductPage {product.name}</h1>
         </div>
     );
 };

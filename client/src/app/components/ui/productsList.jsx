@@ -12,7 +12,7 @@ const ProductsList = () => {
                 <li key={ prod._id }>
                     <p>rate: ({ prod.rate })</p>
                     <h4>
-                        <Link to={`/product/${prod._id}`} > { prod.name } </Link>
+                        <Link to={`/products/${prod._id}`} > { prod.name } </Link>
                     </h4>
                     <div>
                             <span>

@@ -10,7 +10,6 @@ import { ToastContainer } from "react-toastify";
 import ProtectedRoute from "./components/common/protectedRoute";
 import LogOut from "./layouts/logOut";
 import AppLoader from "./components/ui/hoc/appLoader";
-import SingleProductPage from "./components/pages/singleProductPage";
 import products from "./layouts/products";
 
 function App() {
@@ -25,8 +24,7 @@ function App() {
                     />
                     <Route path="/login/:type?" component={Login} />
                     <Route path="/logout" component={LogOut} />
-                    <Route path="/product/:productId?/:edit?" component={SingleProductPage} />
-                    <Route path="/products" component={products} />
+                    <Route path="/products/:prodId?/:edit?" exact component={products} />
                     <Route path="/" exact component={Main} />
                     <Redirect to="/" />
                 </Switch>

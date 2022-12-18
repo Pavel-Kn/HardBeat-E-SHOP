@@ -8,17 +8,16 @@ import ProductCardEdit from "../components/pages/productEdit";
 
 const Products = () => {
     const params = useParams();
-    const { productId, edit } = params;
+    const { prodId, edit } = params;
     const isLoading = useSelector(getProductsLoadingStatus());
     const productsList = useSelector(getProducts());
-    const product = useSelector(getProductById(productId));
-    console.log(product);
+    const product = useSelector(getProductById(prodId));
     return (
         <div className="container">
             <>
-                {productId ? (
+                {prodId ? (
                     edit ? (
-                            <ProductCardEdit productId={productId}/>
+                            <ProductCardEdit productId={prodId}/>
                         )
                         : (
                             !isLoading && <SingleProductPage product={ product }/>
