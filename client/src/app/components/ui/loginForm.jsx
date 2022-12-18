@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { validator } from "../../utils/validator";
 import TextField from "../common/form/textField";
-import CheckBoxField from "../common/form/checkBoxField";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuthErrors, login } from "../../store/users";
@@ -14,7 +13,7 @@ const LoginForm = () => {
     });
     const loginError = useSelector(getAuthErrors());
     const history = useHistory();
-    const dispath = useDispatch();
+    const dispatch = useDispatch();
     const [errors, setErrors] = useState({});
 
     const handleChange = (target) => {
@@ -54,7 +53,7 @@ const LoginForm = () => {
             ? history.location.state.from.pathname
             : "/";
 
-        dispath(login({ payload: data, redirect }));
+        dispatch(login({ payload: data, redirect }));
     };
     return (
         <form onSubmit={handleSubmit}>
@@ -73,15 +72,7 @@ const LoginForm = () => {
                 onChange={handleChange}
                 error={errors.password}
             />
-            <CheckBoxField
-                value={data.stayOn}
-                onChange={handleChange}
-                name="stayOn"
-            >
-                Оставаться в системе
-            </CheckBoxField>
             {loginError && <p className="text-danger">{loginError}</p>}
-
             <button
                 type="submit"
                 disabled={!isValid}

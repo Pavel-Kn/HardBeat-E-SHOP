@@ -20,17 +20,6 @@ const NavBar = () => {
                             Products
                         </Link>
                     </li>
-                    {isLoggedIn && (
-                        <li className="nav-item">
-                            <Link
-                                className="nav-link "
-                                aria-current="page"
-                                to="/users"
-                            >
-                                Users
-                            </Link>
-                        </li>
-                    )}
                 </ul>
                 <div className="d-flex">
                     {isLoggedIn ? (

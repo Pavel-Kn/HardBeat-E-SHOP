@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { validator } from "../../utils/validator";
 import TextField from "../common/form/textField";
-import SelectField from "../common/form/selectField";
 import RadioField from "../common/form/radio.Field";
-import MultiSelectField from "../common/form/multiSelectField";
 import CheckBoxField from "../common/form/checkBoxField";
-import { useSelector, useDispatch } from "react-redux";
-import { getQualities } from "../../store/qualities";
-import { getProfessions } from "../../store/professions";
+import { useDispatch } from "react-redux";
 import { signUp } from "../../store/users";
 
 const RegisterForm = () => {
@@ -15,24 +11,10 @@ const RegisterForm = () => {
     const [data, setData] = useState({
         email: "",
         password: "",
-        profession: "",
         sex: "male",
         name: "",
-        qualities: [],
         licence: false
     });
-
-    const qualities = useSelector(getQualities());
-    const qualitiesList = qualities.map((q) => ({
-        label: q.name,
-        value: q._id
-    }));
-    const professions = useSelector(getProfessions());
-
-    const professionsList = professions.map((p) => ({
-        label: p.name,
-        value: p._id
-    }));
     const [errors, setErrors] = useState({});
 
     const handleChange = (target) => {
@@ -41,7 +23,7 @@ const RegisterForm = () => {
             [target.name]: target.value
         }));
     };
-    const validatorConfog = {
+    const validatorConfig = {
         email: {
             isRequired: {
                 message: "Электронная почта обязательна для заполнения"
@@ -74,11 +56,6 @@ const RegisterForm = () => {
                 value: 8
             }
         },
-        profession: {
-            isRequired: {
-                message: "Обязательно выберите вашу профессию"
-            }
-        },
         licence: {
             isRequired: {
                 message:
@@ -90,7 +67,7 @@ const RegisterForm = () => {
         validate();
     }, [data]);
     const validate = () => {
-        const errors = validator(data, validatorConfog);
+        const errors = validator(data, validatorConfig);
         setErrors(errors);
         return Object.keys(errors).length === 0;
     };
@@ -100,10 +77,7 @@ const RegisterForm = () => {
         e.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-        const newData = {
-            ...data,
-            qualities: data.qualities.map((q) => q.value)
-        };
+        const newData = { ...data };
         dispatch(signUp(newData));
     };
 
@@ -131,15 +105,6 @@ const RegisterForm = () => {
                 onChange={handleChange}
                 error={errors.password}
             />
-            <SelectField
-                label="Выбери свою профессию"
-                defaultOption="Choose..."
-                name="profession"
-                options={professionsList}
-                onChange={handleChange}
-                value={data.profession}
-                error={errors.profession}
-            />
             <RadioField
                 options={[
                     { name: "Male", value: "male" },
@@ -150,12 +115,6 @@ const RegisterForm = () => {
                 name="sex"
                 onChange={handleChange}
                 label="Выберите ваш пол"
-            />
-            <MultiSelectField
-                options={qualitiesList}
-                onChange={handleChange}
-                name="qualities"
-                label="Выберите ваши качесвта"
             />
             <CheckBoxField
                 value={data.licence}
