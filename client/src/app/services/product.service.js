@@ -4,7 +4,14 @@ const productEndpoint = "product/";
 
 const productService = {
     get: async () => {
-        const { data } = await httpService.get(productEndpoint);
+        const req = await httpService.get(productEndpoint);
+        return req.data;
+    },
+    update: async (payload) => {
+        const { data } = await httpService.patch(
+            productEndpoint + payload._id,
+            payload
+        );
         return data;
     }
 };

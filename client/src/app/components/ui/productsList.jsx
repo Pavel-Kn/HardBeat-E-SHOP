@@ -1,34 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import productService from "../../services/product.service";
+import { useSelector } from "react-redux";
+import { getProducts, getProductsLoadingStatus } from "../../store/products";
 
 const ProductsList = () => {
-    const [productsList, setProductsList] = useState();
-    useEffect(() => {
-        productService.get().then((data) => setProductsList(data));
-    }, []);
-    if (productsList) {
-        return (
-            <div>
-                {productsList.content.map((elem) => {
-                    const { _id, name, model, price } = elem;
-                    return (
-                        <article key={_id}>
-                            <div>
-                                <h4>{name} {model}</h4>
-                                <h5 className='price'>price: {price}</h5>
-                                <Link to={`/products/${_id}`} className='btn'>
-                                    Details
-                                </Link>
-                            </div>
-                        </article>
-                    );
-                })}
-            </div>
-        );
-    } else {
-        return <h1>Loading...</h1>;
-    }
+    const isLoading = useSelector(getProductsLoadingStatus());
+    const productsList = useSelector(getProducts());
+    return (
+        <ul>
+            {!isLoading && productsList.map((prod) => (
+                <li key={ prod._id }>
+                    <p>rate: ({ prod.rate })</p>
+                    <h4>
+                        <Link to={`/product/${prod._id}`} > { prod.name } </Link>
+                    </h4>
+                    <div>
+                            <span>
+                                ${ prod.price }
+                            </span>
+                    </div>
+                </li>
+            ))}
+        </ul>);
 };
 
 export default ProductsList;
