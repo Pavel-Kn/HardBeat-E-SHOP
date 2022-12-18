@@ -1,5 +1,5 @@
 import React from "react";
-import ProductsList from "../../ui/productsList";
+import ProductsList from "../ui/productsList";
 import { useParams } from "react-router-dom";
 
 const ProductsPage = () => {

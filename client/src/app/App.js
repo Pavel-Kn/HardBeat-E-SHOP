@@ -10,8 +10,8 @@ import { ToastContainer } from "react-toastify";
 import ProtectedRoute from "./components/common/protectedRoute";
 import LogOut from "./layouts/logOut";
 import AppLoader from "./components/ui/hoc/appLoader";
-import ProductsPage from "./components/page/productsPage";
-import SingleProductPage from "./components/page/singleProductPage";
+import ProductsPage from "./components/pages/productsPage";
+import SingleProductPage from "./components/pages/singleProductPage";
 
 function App() {
     return (

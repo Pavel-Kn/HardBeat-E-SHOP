@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import UserPage from "../components/page/userPage";
+import UserPage from "../components/pages/userPage";
 import UsersLoader from "../components/ui/hoc/usersLoader";
 const Users = () => {
     const params = useParams();

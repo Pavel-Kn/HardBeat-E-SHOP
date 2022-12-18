@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import productService from "../../../services/product.service";
+import productService from "../../services/product.service";
 
 const SingleProductPage = () => {
     const { id } = useParams();

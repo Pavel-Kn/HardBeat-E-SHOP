@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { products } from "../../api/fake.api/product";
 import { Link } from "react-router-dom";
 import productService from "../../services/product.service";
 
