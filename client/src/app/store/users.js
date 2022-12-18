@@ -72,13 +72,10 @@ const {
     usersRequestFiled,
     authRequestFailed,
     authRequestSuccess,
-    userLoggedOut,
-    userUpdateSuccessed
+    userLoggedOut
 } = actions;
 
 const authRequested = createAction("users/authRequested");
-const userUpdateFailed = createAction("users/userUpdateFailed");
-const userUpdateRequested = createAction("users/userUpdateRequested");
 
 export const login =
     ({ payload, redirect }) =>
@@ -108,7 +105,7 @@ export const signUp = (payload) =>
             const data = await authService.register(payload);
             localStorageService.setTokens(data);
             dispatch(authRequestSuccess({ userId: data.userId }));
-            history.push("/users");
+            history.push("/");
         } catch (error) {
             dispatch(authRequestFailed(error.message));
         }
@@ -127,18 +124,7 @@ export const loadUsersList = () => async (dispatch) => {
         dispatch(usersRequestFiled(error.message));
     }
 };
-export const updateUser = (payload) => async (dispatch) => {
-    dispatch(userUpdateRequested());
-    try {
-        const { content } = await userService.update(payload);
-        dispatch(userUpdateSuccessed(content));
-        history.push(`/users/${content._id}`);
-    } catch (error) {
-        dispatch(userUpdateFailed(error.message));
-    }
-};
 
-export const getUsersList = () => (state) => state.users.entities;
 export const getCurrentUserData = () => (state) => {
     return state.users.entities
         ? state.users.entities.find((u) => u._id === state.users.auth.userId)
