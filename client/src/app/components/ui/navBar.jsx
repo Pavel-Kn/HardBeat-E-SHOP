@@ -8,24 +8,28 @@ const NavBar = () => {
     const { cartItems } = useSelector(state => state.cart);
     const isLoggedIn = useSelector(getIsLoggedIn());
     return (
-        <nav className="navbar bg-light mb-3">
-            <div className="container-fluid">
+        <nav className="navbar navbar-expand-md bg-light navbar-dark">
+            <div className="container-fluid d-flex align-content-center">
                 <ul className="nav">
-                    <li className="nav-item">
-                        <Link className="nav-link " aria-current="page" to="/">
+                    <li className="nav-item ">
+                        <Link className="nav-link fw-bold link-dark" aria-current="page" to="/">
                             Main
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link " aria-current="page" to="/products">
+                        <Link className="nav-link fw-bold link-dark" aria-current="page" to="/products">
                             Products
                         </Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/cart"><i className="bi bi-cart-check"></i> ({cartItems.length})</Link>
-                    </li>
                 </ul>
-                <div className="d-flex">
+                <div className="d-flex align-content-center">
+                    <div className="d-flex align-items-center ">
+                        <Link className="nav-link link-dark" to="/cart">
+                            <i className="bi bi-cart-fill">
+                                <span className="badge rounded-pill badge-notification bg-danger">{cartItems.length}</span>
+                            </i>
+                        </Link>
+                    </div>
                     {isLoggedIn ? (
                         <NavProfile />
                     ) : (

@@ -2,6 +2,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { decrementQ, incrementQ, removeFromCart } from "../../store/cart";
+import image from "../../assets/thor.jpg";
 
 export default function Cart() {
     const { cartItems } = useSelector(state => state.cart);
@@ -12,45 +13,44 @@ export default function Cart() {
             <div className="col-md-12">
                 <div className="card">
                     <div className="card-body">
-                        <table className="table">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Subtotal</th>
-                                <th></th>
-                            </tr>
+                        <table className="table align-middle mb-0 bg-white">
+                            <thead className="bg-light">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Subtotal</th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
-                            {
-                                cartItems.map(item => (
+                                {cartItems.map(item => (
                                     <tr key={item.id}>
-                                        <td>{item.id}</td>
                                         <td>
-                                            <img src={item.image}
-                                                 className='fluid rounded'
-                                                 width={60}
-                                                 height={60}
-                                                 alt={item.name} />
-                                        </td>
-                                        <td>
-                                            {item.name}
+                                            <div className="d-flex align-items-center">
+                                                <img src={image}
+                                                     className="rounded-circle"
+                                                     width={45}
+                                                     height={45}
+                                                     alt={item.name} />
+                                                <div className="ms-3">
+                                                    <p className="fw-bold mb-1">{item.name}</p>
+                                                    <p className="fw-bold mb-">{item.model}</p>
+                                                </div>
+                                            </div>
                                         </td>
                                         <td>
                                             <i
                                                 onClick={() => dispatch(incrementQ(item))}
                                                 style={{ cursor: "pointer" }}
-                                                className="bi bi-caret-up"></i>
+                                                className="bi bi-plus-circle"></i>
                                             <span className="mx-2">
                                                     {item.quantity}
                                                 </span>
                                             <i
                                                 onClick={() => dispatch(decrementQ(item))}
                                                 style={{ cursor: "pointer" }}
-                                                className="bi bi-caret-down"></i>
+                                                className="bi bi-dash-circle"></i>
                                         </td>
                                         <td>
                                             ${item.price}
@@ -68,10 +68,10 @@ export default function Cart() {
                                 ))
                             }
                             <tr>
-                                <th colSpan={3} className='text-center'>
+                                <th colSpan={3} className="text-center">
                                     Total
                                 </th>
-                                <td colSpan={3} className='text-center'>
+                                <td colSpan={3} className="text-right">
                                         <span className="badge bg-danger rounded-pill">
                                             ${
                                             // eslint-disable-next-line no-return-assign

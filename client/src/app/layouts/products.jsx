@@ -12,7 +12,7 @@ const Products = () => {
     const isLoading = useSelector(getProductsLoadingStatus());
     const product = useSelector(getProductById(prodId));
     return (
-        <div className="container">
+        <div className="container main-container">
             <>
                 {prodId ? (
                     edit ? (
@@ -22,8 +22,7 @@ const Products = () => {
                             !isLoading && <SingleProductPage product={product}/>
                         )
                 ) : (
-                    <div className="container__products">
-                        <h2 className="subtitle">Our products.</h2>
+                    <div>
                         { !isLoading && <ProductsList /> }
                     </div>
                 )}

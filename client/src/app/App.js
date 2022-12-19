@@ -5,6 +5,7 @@ import Login from "./layouts/login";
 import Main from "./layouts/main";
 import NavBar from "./components/ui/navBar";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./components/common/protectedRoute";
 import LogOut from "./layouts/logOut";
 import AppLoader from "./components/ui/hoc/appLoader";
@@ -22,7 +23,7 @@ function App() {
                     />
                     <Route path="/login/:type?" component={Login} />
                     <Route path="/logout" component={LogOut} />
-                    <Route path="/cart/:cartProductId?" component={CartPage} />
+                    <Route path="/cart" component={CartPage} />
                     <Route path="/products/:prodId?/:edit?" exact component={products} />
                     <Route path="/" exact component={Main} />
                     <Redirect to="/" />
