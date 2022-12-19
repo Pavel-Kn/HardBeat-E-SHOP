@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import TextField from "../common/form/textField";
+import TextAreaField from "../common/form/textAreaField";
+import BackHistoryButton from "../common/backButton";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductById, updateProduct } from "../../store/products";
+import { getCurrentProductData, updateProduct } from "../../store/products";
 import { validator } from "../../utils/validator";
 import propTypes from "prop-types";
-import TextAreaField from "../common/form/textAreaField";
 
-const ProductCardEdit = ({ productId }) => {
+const ProductEditPage = ({ prodId }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [errors, setErrors] = useState({});
     const [data, setData] = useState();
-    const currentProduct = useSelector(getProductById(productId));
+    const currentProduct = useSelector(getCurrentProductData(prodId));
     const dispatch = useDispatch();
     const history = useHistory();
+    console.log(currentProduct);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -71,8 +73,9 @@ const ProductCardEdit = ({ productId }) => {
     const isValid = Object.keys(errors).length === 0;
 
     return (
-        <div className="container">
-            <h2 className="subtitle"> Change product card </h2>
+        <div>
+            <h2> Change product card </h2>
+            <BackHistoryButton />
             <div>
                 <div>
                     { !isLoading ? (
@@ -85,23 +88,51 @@ const ProductCardEdit = ({ productId }) => {
                                 error={errors.name}
                             />
                             <TextField
+                                label="Model"
+                                name="model"
+                                value={data.model}
+                                onChange={handleChange}
+                                error={errors.name}
+                            />
+                            <TextField
+                                label="Category"
+                                name="category"
+                                value={data.category}
+                                onChange={handleChange}
+                                error={errors.name}
+                            />
+                            <TextField
                                 label="Image"
                                 name="img"
-                                value={data.img}
+                                value={data.image}
                                 onChange={handleChange}
                                 error={errors.name}
                             />
                             <TextAreaField
                                 label="Text"
                                 name="text"
-                                value={data.text}
+                                value={data.descriptionFull}
+                                onChange={handleChange}
+                                error={errors.text}
+                            />
+                            <TextAreaField
+                                label="Text"
+                                name="text"
+                                value={data.descriptionShort}
                                 onChange={handleChange}
                                 error={errors.text}
                             />
                             <TextField
                                 label="Rate"
                                 name="rate"
-                                value={data.rate}
+                                value={data.rating}
+                                onChange={handleChange}
+                                error={errors.rate}
+                            />
+                            <TextField
+                                label="Quantity"
+                                name="quantity"
+                                value={data.quantity}
                                 onChange={handleChange}
                                 error={errors.rate}
                             />
@@ -133,8 +164,8 @@ const ProductCardEdit = ({ productId }) => {
     );
 };
 
-ProductCardEdit.propTypes = {
-    productId: propTypes.string
+ProductEditPage.propTypes = {
+    prodId: propTypes.string
 };
 
-export default ProductCardEdit;
+export default ProductEditPage;
