@@ -13,18 +13,13 @@ const ProductEditPage = ({ prodId }) => {
     const [data, setData] = useState();
     const currentProduct = useSelector(getCurrentProductData(prodId));
     const dispatch = useDispatch();
-    console.log(currentProduct);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const isValid = validate();
         if (!isValid) return;
-
-        dispatch(
-            updateProduct(data)
-        );
+        dispatch(updateProduct(data));
     };
-
     useEffect(() => {
         if (currentProduct && !data) {
             setData({
@@ -58,6 +53,7 @@ const ProductEditPage = ({ prodId }) => {
     };
     // тут косяк, в валидации отключил трим =(
     useEffect(() => validate(), [data]);
+
     const handleChange = (target) => {
         setData((prevState) => ({
             ...prevState,
@@ -102,28 +98,37 @@ const ProductEditPage = ({ prodId }) => {
                             />
                             <TextField
                                 label="Image"
-                                name="img"
+                                name="image"
                                 value={data.image}
                                 onChange={handleChange}
                                 error={errors.name}
                             />
                             <TextAreaField
-                                label="Text"
-                                name="text"
+                                label="description Full"
+                                name="descriptionFull"
                                 value={data.descriptionFull}
                                 onChange={handleChange}
                                 error={errors.text}
                             />
                             <TextAreaField
-                                label="Text"
-                                name="text"
+                                label="description Short"
+                                name="descriptionShort"
                                 value={data.descriptionShort}
                                 onChange={handleChange}
                                 error={errors.text}
                             />
                             <TextField
+                                label="Price"
+                                name="price"
+                                type="number"
+                                value={data.price}
+                                onChange={handleChange}
+                                error={errors.price}
+                            />
+                            <TextField
                                 label="Rate"
-                                name="rate"
+                                name="rating"
+                                type="number"
                                 value={data.rating}
                                 onChange={handleChange}
                                 error={errors.rate}
@@ -131,21 +136,16 @@ const ProductEditPage = ({ prodId }) => {
                             <TextField
                                 label="Quantity"
                                 name="quantity"
+                                type="number"
                                 value={data.quantity}
                                 onChange={handleChange}
                                 error={errors.rate}
-                            />
-                            <TextField
-                                label="Price"
-                                name="price"
-                                value={data.price}
-                                onChange={handleChange}
-                                error={errors.price}
                             />
                             <div>
                                 <button
                                     type="submit"
                                     disabled={!isValid}
+                                    className="btn btn-primary w-100 mx-auto"
                                 >
                                     Update
                                 </button>

@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/common/protectedRoute";
 import LogOut from "./layouts/logOut";
 import AppLoader from "./components/ui/hoc/appLoader";
 import products from "./layouts/products";
+import CartPage from "./components/pages/cartPage";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     />
                     <Route path="/login/:type?" component={Login} />
                     <Route path="/logout" component={LogOut} />
+                    <Route path="/cart/:cartProductId?" component={CartPage} />
                     <Route path="/products/:prodId?/:edit?" exact component={products} />
                     <Route path="/" exact component={Main} />
                     <Redirect to="/" />
