@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { getIsLoggedIn } from "../../store/users";
 import NavProfile from "./navProfile";
 const NavBar = () => {
+    const { cartItems } = useSelector(state => state.cart);
     const isLoggedIn = useSelector(getIsLoggedIn());
     return (
         <nav className="navbar bg-light mb-3">
@@ -21,9 +22,7 @@ const NavBar = () => {
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link " aria-current="page" to="/cart">
-                            Cart
-                        </Link>
+                        <Link className="nav-link" to="/cart"><i className="bi bi-cart-check"></i> ({cartItems.length})</Link>
                     </li>
                 </ul>
                 <div className="d-flex">

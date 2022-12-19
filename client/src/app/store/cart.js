@@ -1,45 +1,84 @@
-// src/redux/cartSlice.js
-import { createSlice } from "@reduxjs/toolkit";
 
-const cartSlice = createSlice({
+import { createSlice } from "@reduxjs/toolkit";
+import Swal from "sweetalert2";
+
+const initialState = {
+    cartItems: []
+};
+
+export const cartSlice = createSlice({
     name: "cart",
-    initialState: {
-        cart: []
-    },
+    initialState,
     reducers: {
-        addToCart: (state, action) => {
-            const itemInCart = state.cart.find((item) => item.id === action.payload.id);
-            if (itemInCart) {
-                itemInCart.quantity++;
+        addToCart(state, action) {
+            console.log(action);
+            const item = action.payload;
+            const productItem = state.cartItems.find(product => product.id === item.id);
+            if (productItem) {
+                productItem.quantity += 1;
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your item has been updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             } else {
-                state.cart.push({ ...action.payload, quantity: 1 });
+                state.cartItems = [item, ...state.cartItems];
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your item has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         },
-        incrementQuantity: (state, action) => {
-            const item = state.cart.find((item) => item.id === action.payload);
-            item.quantity++;
-        },
-        decrementQuantity: (state, action) => {
-            const item = state.cart.find((item) => item.id === action.payload);
-            if (item.quantity === 1) {
-                item.quantity = 1;
-            } else {
-                item.quantity--;
+        incrementQ(state, action) {
+            const item = action.payload;
+            const productItem = state.cartItems.find(product => product.id === item.id);
+            if (productItem) {
+                productItem.quantity += 1;
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your item has been updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             }
         },
-        removeItem: (state, action) => {
-            const removeItem = state.cart.filter((item) => item.id !== action.payload);
-            state.cart = removeItem;
+        decrementQ(state, action) {
+            const item = action.payload;
+            const productItem = state.cartItems.find(product => product.id === item.id);
+            if (productItem) {
+                productItem.quantity -= 1;
+                if (productItem.quantity === 0) {
+                    state.cartItems = state.cartItems.filter(product => product.id !== item.id);
+                }
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your item has been updated",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        },
+        removeFromCart(state, action) {
+            const item = action.payload;
+            state.cartItems = state.cartItems.filter(product => product.id !== item.id);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your item has been removed",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
     }
 });
 
-export const cartReducer = cartSlice.reducer;
-export const {
-    addToCart,
-    incrementQuantity,
-    decrementQuantity,
-    removeItem
-} = cartSlice.actions;
+export const { addToCart, incrementQ, decrementQ, removeFromCart } = cartSlice.actions;
 
-export default cartReducer;
+export default cartSlice.reducer;
