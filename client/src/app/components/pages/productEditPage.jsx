@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import TextField from "../common/form/textField";
 import TextAreaField from "../common/form/textAreaField";
 import BackHistoryButton from "../common/backButton";
@@ -14,7 +13,6 @@ const ProductEditPage = ({ prodId }) => {
     const [data, setData] = useState();
     const currentProduct = useSelector(getCurrentProductData(prodId));
     const dispatch = useDispatch();
-    const history = useHistory();
     console.log(currentProduct);
 
     const handleSubmit = (e) => {
@@ -58,6 +56,7 @@ const ProductEditPage = ({ prodId }) => {
             }
         }
     };
+    // тут косяк, в валидации отключил трим =(
     useEffect(() => validate(), [data]);
     const handleChange = (target) => {
         setData((prevState) => ({
@@ -144,9 +143,6 @@ const ProductEditPage = ({ prodId }) => {
                                 error={errors.price}
                             />
                             <div>
-                                <button onClick={() => history.goBack()}>
-                                    <i className="bi bi-caret-left"></i> Back
-                                </button>
                                 <button
                                     type="submit"
                                     disabled={!isValid}
