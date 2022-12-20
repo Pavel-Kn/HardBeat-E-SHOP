@@ -24,20 +24,6 @@ const NavBar = () => {
                         </Link>
                     </li>
                 </ul>
-                <div>
-                    {isLoggedIn && isAdmin ? (
-                            <Link
-                                className="nav-link link-dark fw-bold"
-                                aria-current="page"
-                                to="/admin"
-
-                            >
-                                Admin
-                            </Link>
-                    ) : (
-                        ""
-                    )}
-                </div>
                 <div className="d-flex align-content-center">
                     <div className="d-flex align-items-center ">
                         <Link className="nav-link link-dark" to="/cart">

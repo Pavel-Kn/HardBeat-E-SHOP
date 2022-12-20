@@ -22,6 +22,13 @@ const NavProfile = () => {
                 />
             </div>
             <div className={"w-100 dropdown-menu" + (isOpen ? " show" : "")}>
+                {currentUser.isAdmin ? (
+                    <Link to="/admin" className="dropdown-item">
+                        Admin Panel
+                    </Link>
+                ) : (
+                    ""
+                )}
                 <Link
                     to={`/users/${currentUser._id}`}
                     className="dropdown-item"
