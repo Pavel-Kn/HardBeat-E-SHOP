@@ -29,9 +29,9 @@ export default function Cart() {
                                         <td>
                                             <div className="d-flex align-items-center">
                                                 <img src={image}
-                                                     className="rounded-circle"
                                                      width={45}
                                                      height={45}
+                                                     className="rounded-circle"
                                                      alt={item.name} />
                                                 <div className="ms-3">
                                                     <p className="fw-bold mb-1">{item.name}</p>
@@ -41,16 +41,16 @@ export default function Cart() {
                                         </td>
                                         <td>
                                             <i
-                                                onClick={() => dispatch(incrementQ(item))}
+                                                onClick={() => dispatch(decrementQ(item))}
                                                 style={{ cursor: "pointer" }}
-                                                className="bi bi-plus-circle"></i>
+                                                className="bi bi-dash-circle"></i>
                                             <span className="mx-2">
                                                     {item.quantity}
                                                 </span>
                                             <i
-                                                onClick={() => dispatch(decrementQ(item))}
+                                                onClick={() => dispatch(incrementQ(item))}
                                                 style={{ cursor: "pointer" }}
-                                                className="bi bi-dash-circle"></i>
+                                                className="bi bi-plus-circle"></i>
                                         </td>
                                         <td>
                                             ${item.price}

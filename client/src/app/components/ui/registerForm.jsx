@@ -13,6 +13,7 @@ const RegisterForm = () => {
         password: "",
         sex: "male",
         name: "",
+        isAdmin: false,
         licence: false
     });
     const [errors, setErrors] = useState({});
@@ -91,13 +92,6 @@ const RegisterForm = () => {
                 error={errors.email}
             />
             <TextField
-                label="Имя"
-                name="name"
-                value={data.name}
-                onChange={handleChange}
-                error={errors.name}
-            />
-            <TextField
                 label="Пароль"
                 type="password"
                 name="password"
@@ -105,11 +99,17 @@ const RegisterForm = () => {
                 onChange={handleChange}
                 error={errors.password}
             />
+            <TextField
+                label="Имя"
+                name="name"
+                value={data.name}
+                onChange={handleChange}
+                error={errors.name}
+            />
             <RadioField
                 options={[
                     { name: "Male", value: "male" },
-                    { name: "Female", value: "female" },
-                    { name: "Other", value: "other" }
+                    { name: "Female", value: "female" }
                 ]}
                 value={data.sex}
                 name="sex"

@@ -11,6 +11,7 @@ import LogOut from "./layouts/logOut";
 import AppLoader from "./components/ui/hoc/appLoader";
 import products from "./layouts/products";
 import CartPage from "./components/pages/cartPage";
+import Admin from "./layouts/admin";
 
 function App() {
     return (
@@ -20,6 +21,9 @@ function App() {
                 <Switch>
                     <ProtectedRoute path="/users/:userId?"
                         component={Users}
+                    />
+                    <ProtectedRoute path="/admin/:userId?"
+                                    component={Admin}
                     />
                     <Route path="/login/:type?" component={Login} />
                     <Route path="/logout" component={LogOut} />

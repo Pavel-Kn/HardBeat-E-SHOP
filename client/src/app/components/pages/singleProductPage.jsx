@@ -1,27 +1,17 @@
 import React from "react";
 import propTypes from "prop-types";
-import { useHistory } from "react-router";
 import { addToCart } from "../../store/cart";
 import { useDispatch } from "react-redux";
 import image from "../../assets/thor.jpg";
 
 const SingleProductPage = ({ product }) => {
     const dispatch = useDispatch();
-    const history = useHistory();
-    const editProduct = () => {
-        history.push(history.location.pathname + "/edit");
-    };
     return (
         <div>
             <h3 className="center">Product Details - {product.name}</h3>
             Details page of Product.
             <div>
                 <div>
-                    <button
-                        onClick={editProduct}
-                    >
-                        <i className="bi bi-gear"></i>
-                    </button>
                     <div className="text-center d-flex align-content-center">
                         <img className="rounded-circle" width={300} alt={product.name} src={image} />
                     </div>

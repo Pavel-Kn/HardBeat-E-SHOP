@@ -11,7 +11,8 @@ const initialState = localStorageService.getAccessToken()
           error: null,
           auth: { userId: localStorageService.getUserId() },
           isLoggedIn: true,
-          dataLoaded: false
+          dataLoaded: false,
+          isAdmin: true
       }
     : {
           entities: null,
@@ -19,7 +20,8 @@ const initialState = localStorageService.getAccessToken()
           error: null,
           auth: null,
           isLoggedIn: false,
-          dataLoaded: false
+          dataLoaded: false,
+          isAdmin: false
       };
 
 const usersSlice = createSlice({
@@ -61,6 +63,11 @@ const usersSlice = createSlice({
         },
         authRequested: (state) => {
             state.error = null;
+        },
+        isUserAdmin: (state) => {
+            if (state.users.entities.isAdmin) {
+                state.users.isAdmin = true;
+            }
         }
     }
 });
@@ -136,6 +143,7 @@ export const getUserById = (userId) => (state) => {
     }
 };
 
+export const getIsAdmin = () => (state) => state.users.isLoggedIn;
 export const getIsLoggedIn = () => (state) => state.users.isLoggedIn;
 export const getDataStatus = () => (state) => state.users.dataLoaded;
 export const getUsersLoadingStatus = () => (state) => state.users.isLoading;
