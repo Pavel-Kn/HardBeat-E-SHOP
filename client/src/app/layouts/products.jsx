@@ -4,7 +4,7 @@ import { getProductById, getProductsLoadingStatus } from "../store/products";
 import { useParams } from "react-router-dom";
 import SingleProductPage from "../components/pages/singleProductPage";
 import ProductEditPage from "../components/pages/productEditPage";
-import ProductsList from "../components/ui/productsList";
+import ProductsPage from "../components/pages/productsPage";
 
 const Products = () => {
     const params = useParams();
@@ -23,7 +23,7 @@ const Products = () => {
                         )
                 ) : (
                     <div>
-                        { !isLoading && <ProductsList /> }
+                        { !isLoading && <ProductsPage/> }
                     </div>
                 )
                     }

@@ -50,7 +50,6 @@ const {
     productCreated
 } = actions;
 
-// const productUpdateFailed = createAction("product/productUpdateFailed");
 const productUpdateRequested = createAction("product/productUpdateRequested");
 const removeProductRequested = createAction("product/removeProductRequested");
 const createProductRequested = createAction("comments/createProductRequested");
@@ -86,7 +85,7 @@ export const updateProduct = (payload) => async (dispatch) => {
     try {
         const { content } = await productService.update(payload);
         dispatch(productUpdateSuccessed(content));
-        history.push(`/products/${content._id}`);
+        history.push(`/admin`);
     } catch (error) {
         dispatch(productsRequestFiled(error.message));
     }
@@ -109,6 +108,7 @@ export const createProduct = (payload) => async (dispatch, getState) => {
     try {
         const { content } = await productService.create(payload);
         dispatch(productCreated(content));
+        history.push(`/admin`);
     } catch (error) {
         dispatch(productsRequestFiled(error.message));
     }

@@ -7,6 +7,7 @@ import {
     loadUsersList
 } from "../../../store/users";
 import { loadProductsList } from "../../../store/products";
+import { loadCategoriesList } from "../../../store/categories";
 
 const AppLoader = ({ children }) => {
     const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const AppLoader = ({ children }) => {
         if (isLoggedIn) {
             dispatch(loadUsersList());
             dispatch(loadProductsList());
+            dispatch(loadCategoriesList());
         }
     }, [isLoggedIn]);
     if (usersStatusLoading) return "loading";

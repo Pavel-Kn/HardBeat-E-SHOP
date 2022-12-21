@@ -2,14 +2,22 @@ import React, { useEffect, useState } from "react";
 import TextField from "../common/form/textField";
 import TextAreaField from "../common/form/textAreaField";
 import BackHistoryButton from "../common/backButton";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../store/products";
 import PropTypes from "prop-types";
 import ProductsForm from "../common/form/productsForm";
+import SelectField from "../common/form/selectField";
+import { getCategories } from "../../store/categories";
 
 const ProductCreatePage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch();
+    const categories = useSelector(getCategories());
+    const categoriesList = categories.map((с) => ({
+        label: с.name,
+        value: с.name
+    }));
+
     const data = {
         name: "",
         model: "",
@@ -70,8 +78,10 @@ const ProductCreatePage = () => {
                                 label="Model"
                                 name="model"
                             />
-                            <TextField
+                            <SelectField
                                 label="Category"
+                                defaultOption="Choose..."
+                                options={categoriesList}
                                 name="category"
                             />
                             <TextField

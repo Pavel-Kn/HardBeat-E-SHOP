@@ -4,11 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProducts, getProductsLoadingStatus } from "../../store/products";
 import { addToCart } from "../../store/cart";
 import image from "../../assets/thor.jpg";
+import { getCategories } from "../../store/categories";
 
 const ProductsList = () => {
     const isLoading = useSelector(getProductsLoadingStatus());
     const productsList = useSelector(getProducts());
     const dispatch = useDispatch();
+    const cat = useSelector(getCategories());
+    console.log(cat);
     return (
         <div className="container">
                 <h3 className="center">Product List</h3>

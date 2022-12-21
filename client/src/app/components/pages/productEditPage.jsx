@@ -6,12 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCurrentProductData, updateProduct } from "../../store/products";
 import PropTypes from "prop-types";
 import ProductsForm from "../common/form/productsForm";
+import SelectField from "../common/form/selectField";
+import { getCategories } from "../../store/categories";
 
 const ProductEditPage = ({ prodId }) => {
     const [isLoading, setIsLoading] = useState(true);
     const currentProduct = useSelector(getCurrentProductData(prodId));
     const dispatch = useDispatch();
     const [data, setData] = useState();
+    const categories = useSelector(getCategories());
+    const categoriesList = categories.map((с) => ({
+        label: с.name,
+        value: с.name
+    }));
 
     const handleSubmit = (data) => {
         dispatch(updateProduct(data));
@@ -68,8 +75,10 @@ const ProductEditPage = ({ prodId }) => {
                                 label="Model"
                                 name="model"
                             />
-                            <TextField
+                            <SelectField
                                 label="Category"
+                                defaultOption="Choose..."
+                                options={categoriesList}
                                 name="category"
                             />
                             <TextField
