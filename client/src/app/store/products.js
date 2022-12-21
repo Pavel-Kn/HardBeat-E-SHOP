@@ -33,17 +33,27 @@ const productsSlice = createSlice({
             state.entities = state.entities.filter(
                 (p) => p._id !== action.payload
             );
+        },
+        productCreated: (state, action) => {
+            state.entities.push(action.payload);
         }
     }
 });
 
 const { reducer: productsReducer, actions } = productsSlice;
-const { productsRequested, productsReceived, productsRequestFiled, productUpdateSuccessed, productRemoved } =
-    actions;
+const {
+    productsRequested,
+    productsReceived,
+    productsRequestFiled,
+    productUpdateSuccessed,
+    productRemoved,
+    productCreated
+} = actions;
 
-const productUpdateFailed = createAction("product/productUpdateFailed");
+// const productUpdateFailed = createAction("product/productUpdateFailed");
 const productUpdateRequested = createAction("product/productUpdateRequested");
 const removeProductRequested = createAction("product/removeProductRequested");
+const createProductRequested = createAction("comments/createProductRequested");
 
 export const loadProductsList = () => async (dispatch, getState) => {
     const { lastFetch } = getState().product;
@@ -78,7 +88,7 @@ export const updateProduct = (payload) => async (dispatch) => {
         dispatch(productUpdateSuccessed(content));
         history.push(`/products/${content._id}`);
     } catch (error) {
-        dispatch(productUpdateFailed(error.message));
+        dispatch(productsRequestFiled(error.message));
     }
 };
 
@@ -90,7 +100,17 @@ export const removeProduct = (prodId) => async (dispatch) => {
             dispatch(productRemoved(prodId));
         }
     } catch (error) {
-        dispatch(productUpdateFailed(error.message));
+        dispatch(productsRequestFiled(error.message));
+    }
+};
+
+export const createProduct = (payload) => async (dispatch, getState) => {
+    dispatch(createProductRequested());
+    try {
+        const { content } = await productService.create(payload);
+        dispatch(productCreated(content));
+    } catch (error) {
+        dispatch(productsRequestFiled(error.message));
     }
 };
 

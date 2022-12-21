@@ -64,26 +64,5 @@ router
             res.status(500).end();
         }
     })
-    .post(async (req, res) => {
-        if (req.user.isAdmin === false) {
-            res.status(403).json({
-                message: "Недостаточно прав",
-            });
-            return;
-        }
-        try {
-            const { prodId } = req.params;
-            const updatedProduct = await Product.findByIdAndUpdate(
-                prodId,
-                req.body,
-                { new: true }
-            );
-            res.json(updatedProduct);
-        } catch (error) {
-            res.status(500).json({
-                message: "На сервере произошла ошибка. Попробуйте позже",
-            });
-        }
-    });
 
 module.exports = router;

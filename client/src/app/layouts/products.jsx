@@ -1,10 +1,10 @@
 import React from "react";
-import ProductsList from "../components/ui/productsList";
 import { useSelector } from "react-redux";
 import { getProductById, getProductsLoadingStatus } from "../store/products";
 import { useParams } from "react-router-dom";
 import SingleProductPage from "../components/pages/singleProductPage";
-import ProductForm from "../components/ui/productForm";
+import ProductEditPage from "../components/pages/productEditPage";
+import ProductsList from "../components/ui/productsList";
 
 const Products = () => {
     const params = useParams();
@@ -16,7 +16,7 @@ const Products = () => {
             <>
                 {prodId ? (
                     edit ? (
-                            <ProductForm prodId={prodId}/>
+                            <ProductEditPage prodId={prodId}/>
                         )
                         : (
                             !isLoading && <SingleProductPage product={product}/>
@@ -25,7 +25,8 @@ const Products = () => {
                     <div>
                         { !isLoading && <ProductsList /> }
                     </div>
-                )}
+                )
+                    }
             </>
         </div>
     );

@@ -22,9 +22,7 @@ function App() {
                     <ProtectedRoute path="/users/:userId?"
                         component={Users}
                     />
-                    <ProtectedRoute path="/admin/:userId?"
-                                    component={Admin}
-                    />
+                    <Route path="/admin/:create?" component={Admin} />
                     <Route path="/login/:type?" component={Login} />
                     <Route path="/logout" component={LogOut} />
                     <Route path="/cart" component={CartPage} />

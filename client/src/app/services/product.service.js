@@ -17,6 +17,10 @@ const productService = {
     remove: async (prodId) => {
         const { data } = await httpService.delete(productEndpoint + prodId);
         return data;
+    },
+    create: async (payload) => {
+        const { data } = await httpService.post(productEndpoint, payload);
+        return data;
     }
 };
 export default productService;

@@ -15,12 +15,16 @@ const AdminPage = () => {
         history.push(`products/${prodId}/edit`);
     };
 
+    const createProduct = () => {
+        history.push("admin/create");
+    };
+
     return (
         <div>
             <div>
                 <h3>Products List</h3>
             </div>
-            <button className="btn btn-secondary m-2">
+            <button className="btn btn-secondary m-2" onClick={() => createProduct()}>
                 Create new product
             </button>
             {productsList ? (

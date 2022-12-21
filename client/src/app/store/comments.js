@@ -11,7 +11,7 @@ const commentsSlice = createSlice({
         commentsRequested: (state) => {
             state.isLoading = true;
         },
-        commentsReceved: (state, action) => {
+        commentsReceived: (state, action) => {
             state.entities = action.payload;
             state.isLoading = false;
         },
@@ -19,7 +19,7 @@ const commentsSlice = createSlice({
             state.error = action.payload;
             state.isLoading = false;
         },
-        commetnCreated: (state, action) => {
+        commentCreated: (state, action) => {
             state.entities.push(action.payload);
         },
         commentRemoved: (state, action) => {
@@ -33,9 +33,9 @@ const commentsSlice = createSlice({
 const { reducer: commentsReducer, actions } = commentsSlice;
 const {
     commentsRequested,
-    commentsReceved,
+    commentsReceived,
     commentsRequestFiled,
-    commetnCreated,
+    commentCreated,
     commentRemoved
 } = actions;
 
@@ -46,7 +46,7 @@ export const loadCommentsList = (userId) => async (dispatch) => {
     dispatch(commentsRequested());
     try {
         const { content } = await commentService.getComments(userId);
-        dispatch(commentsReceved(content));
+        dispatch(commentsReceived(content));
     } catch (error) {
         dispatch(commentsRequestFiled(error.message));
     }
@@ -55,7 +55,7 @@ export const createComment = (payload) => async (dispatch, getState) => {
     dispatch(addCommentRequested());
     try {
         const { content } = await commentService.createComment(payload);
-        dispatch(commetnCreated(content));
+        dispatch(commentCreated(content));
     } catch (error) {
         dispatch(commentsRequestFiled(error.message));
     }
