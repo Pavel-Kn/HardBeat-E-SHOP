@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { getProductById, getProductsLoadingStatus } from "../store/products";
 import { useParams } from "react-router-dom";
 import SingleProductPage from "../components/pages/singleProductPage";
-import ProductEditPage from "../components/pages/productEditPage";
+import ProductForm from "../components/ui/productForm";
 
 const Products = () => {
     const params = useParams();
@@ -16,7 +16,7 @@ const Products = () => {
             <>
                 {prodId ? (
                     edit ? (
-                            <ProductEditPage prodId={prodId}/>
+                            <ProductForm prodId={prodId}/>
                         )
                         : (
                             !isLoading && <SingleProductPage product={product}/>

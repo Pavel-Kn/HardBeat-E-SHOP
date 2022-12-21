@@ -7,7 +7,7 @@ import { getCurrentProductData, updateProduct } from "../../store/products";
 import { validator } from "../../utils/validator";
 import propTypes from "prop-types";
 
-const ProductEditPage = ({ prodId }) => {
+const ProductForm = ({ prodId }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [errors, setErrors] = useState({});
     const [data, setData] = useState();
@@ -160,8 +160,8 @@ const ProductEditPage = ({ prodId }) => {
     );
 };
 
-ProductEditPage.propTypes = {
+ProductForm.propTypes = {
     prodId: propTypes.string
 };
 
-export default ProductEditPage;
+export default ProductForm;

@@ -13,6 +13,10 @@ const productService = {
             payload
         );
         return data;
+    },
+    remove: async (prodId) => {
+        const { data } = await httpService.delete(productEndpoint + prodId);
+        return data;
     }
 };
 export default productService;

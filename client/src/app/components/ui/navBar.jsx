@@ -6,8 +6,6 @@ import NavProfile from "./navProfile";
 const NavBar = () => {
     const { cartItems } = useSelector(state => state.cart);
     const isLoggedIn = useSelector(getIsLoggedIn());
-    const { isAdmin } = useSelector(state => state.users);
-    console.log(isAdmin);
 
     return (
         <nav className="navbar navbar-expand-md bg-light navbar-dark">

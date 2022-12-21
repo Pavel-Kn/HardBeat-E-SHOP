@@ -28,16 +28,22 @@ const productsSlice = createSlice({
             state.entities[
                 state.entities.findIndex((p) => p._id === action.payload._id)
                 ] = action.payload;
+        },
+        productRemoved: (state, action) => {
+            state.entities = state.entities.filter(
+                (p) => p._id !== action.payload
+            );
         }
     }
 });
 
 const { reducer: productsReducer, actions } = productsSlice;
-const { productsRequested, productsReceived, productsRequestFiled, productUpdateSuccessed } =
+const { productsRequested, productsReceived, productsRequestFiled, productUpdateSuccessed, productRemoved } =
     actions;
 
 const productUpdateFailed = createAction("product/productUpdateFailed");
 const productUpdateRequested = createAction("product/productUpdateRequested");
+const removeProductRequested = createAction("product/removeProductRequested");
 
 export const loadProductsList = () => async (dispatch, getState) => {
     const { lastFetch } = getState().product;
@@ -71,6 +77,18 @@ export const updateProduct = (payload) => async (dispatch) => {
         const { content } = await productService.update(payload);
         dispatch(productUpdateSuccessed(content));
         history.push(`/products/${content._id}`);
+    } catch (error) {
+        dispatch(productUpdateFailed(error.message));
+    }
+};
+
+export const removeProduct = (prodId) => async (dispatch) => {
+    dispatch(removeProductRequested());
+    try {
+        const { content } = await productService.remove(prodId);
+        if (!content) {
+            dispatch(productRemoved(prodId));
+        }
     } catch (error) {
         dispatch(productUpdateFailed(error.message));
     }
