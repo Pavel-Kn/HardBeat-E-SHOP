@@ -2,18 +2,18 @@
   {
     "name": "Carvin",
     "model": "LB-75",
-    "category": "Бас гитара",
+    "category": "Bass guitars",
     "price": 25999,
     "image": "link",
-    "descriptionFull": "descriptionFull",
-    "descriptionShort": "descriptionShort",
+    "descriptionFull": "description Full",
+    "descriptionShort": "description Short",
     "quantity": 3,
     "rating": 5
   },
   {
     "name": "Warwick",
     "model": "Streamer",
-    "category": "Бас гитара",
+    "category": "Bass guitars",
     "price": 53999,
     "image": "link",
     "descriptionFull": "descriptionFull",
@@ -24,7 +24,7 @@
   {
     "name": "Fender",
     "model": "Stratocaster",
-    "category": "Электро гитара",
+    "category": "Electric guitars",
     "price": 65999,
     "image": "link",
     "descriptionFull": "descriptionFull",
@@ -35,7 +35,7 @@
   {
     "name": "Gibson",
     "model": "Les Paul",
-    "category": "Электро гитара",
+    "category": "Electric guitars",
     "price": 66999,
     "image": "link",
     "descriptionFull": "descriptionFull",
@@ -46,7 +46,7 @@
   {
     "name": "Yamaha",
     "model": "Rock Bit",
-    "category": "Барабаны",
+    "category": "Drums",
     "price": 299999,
     "image": "link",
     "descriptionFull": "descriptionFull",
@@ -57,7 +57,7 @@
   {
     "name": "Tama",
     "model": "Swing Star",
-    "category": "Барабаны",
+    "category": "Drums",
     "price": 223999,
     "image": "link",
     "descriptionFull": "descriptionFull",
@@ -68,7 +68,7 @@
   {
     "name": "Shure",
     "model": "SM-58",
-    "category": "Микрофоны",
+    "category": "Microphones",
     "price": 1999,
     "image": "link",
     "descriptionFull": "descriptionFull",
@@ -79,12 +79,34 @@
   {
     "name": "Sennheiser",
     "model": "E-935",
-    "category": "Микрофоны",
+    "category": "Microphones",
     "price": 2999,
     "image": "link",
     "descriptionFull": "descriptionFull",
     "descriptionShort": "descriptionShort",
-    "quantity": 39,
+    "quantity": 9,
+    "rating": 5
+  },
+  {
+    "name": "Korg",
+    "model": "B2 Black",
+    "category": "Keyboards",
+    "price": 11999,
+    "image": "link",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 2,
+    "rating": 4
+  },
+  {
+    "name": "Roland",
+    "model": "FP-30X BK",
+    "category": "Keyboards",
+    "price": 12999,
+    "image": "link",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 3,
     "rating": 5
   }
 ]

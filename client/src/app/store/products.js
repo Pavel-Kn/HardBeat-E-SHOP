@@ -6,10 +6,16 @@ import history from "../utils/history";
 const productsSlice = createSlice({
     name: "products",
     initialState: {
-        entities: null,
+        entities: [],
+        filtered_products: [],
         isLoading: true,
         error: null,
-        lastFetch: null
+        lastFetch: null,
+        filters: {
+            text: "",
+            category: "all",
+            model: "all"
+        }
     },
     reducers: {
         productsRequested: (state) => {
@@ -36,18 +42,29 @@ const productsSlice = createSlice({
         },
         productCreated: (state, action) => {
             state.entities.push(action.payload);
+        },
+        filterProducts: (state, action) => {
+            state.filters = action.payload;
+            state.filtered_products = state.entities.filter((p) => {
+                const { text, category } = state.filters;
+                const textMatch = p.name.toLowerCase().includes(text.toLowerCase());
+                const categoryMatch = category === "all" ? true : p.category === category;
+                return textMatch && categoryMatch;
+            });
         }
     }
 });
 
 const { reducer: productsReducer, actions } = productsSlice;
-const {
+export const {
     productsRequested,
     productsReceived,
     productsRequestFiled,
     productUpdateSuccessed,
     productRemoved,
-    productCreated
+    productCreated,
+    updateFilters,
+    filterProducts
 } = actions;
 
 const productUpdateRequested = createAction("product/productUpdateRequested");
@@ -67,6 +84,8 @@ export const loadProductsList = () => async (dispatch, getState) => {
     }
 };
 export const getProducts = () => (state) => state.product.entities;
+export const getSearchText = () => (state) => state.product.searchText;
+export const getFilteredProducts = () => (state) => state.product.filtered_products;
 export const getProductsLoadingStatus = () => (state) =>
     state.product.isLoading;
 export const getCurrentProductData = (prodId) => (state) => {
