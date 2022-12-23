@@ -12,16 +12,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 const Comments = () => {
-    const { userId } = useParams();
+    const { prodId } = useParams();
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(loadCommentsList(userId));
-    }, [userId]);
+        dispatch(loadCommentsList(prodId));
+    }, [prodId]);
     const isLoading = useSelector(getCommentsLoadingStatus());
 
     const comments = useSelector(getComments());
     const handleSubmit = (data) => {
-        dispatch(createComment({ ...data, pageId: userId }));
+        dispatch(createComment({ ...data, pageId: prodId }));
     };
     const handleRemoveComment = (id) => {
         dispatch(removeComment(id));

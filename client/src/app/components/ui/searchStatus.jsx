@@ -11,15 +11,15 @@ const SearchStatus = ({ length }) => {
         return "products";
     };
     return (
-        <h2>
+        <h4 className="d-flex col-3">
             <span
-                className={"badge " + (length > 0 ? "bg-primary" : "bg-danger")}
+                className={"badge " + (length > 0 ? "bg-secondary" : "bg-danger")}
             >Find:
                 {length > 0
                     ? ` ${length + " " + renderPhrase(length)}`
                     : " no one"}
             </span>
-        </h2>
+        </h4>
     );
 };
 SearchStatus.propTypes = {

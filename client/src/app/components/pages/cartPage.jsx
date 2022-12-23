@@ -9,7 +9,7 @@ export default function Cart() {
     const dispatch = useDispatch();
 
     return (
-        <div className='row my-4'>
+        <div className="container py-5 bg-light">
             <div className="col-md-12">
                 <div className="card">
                     <div className="card-body">

@@ -3,7 +3,7 @@ import Hero from "../components/ui/hero";
 
 const Main = () => {
     return (
-        <div className="container mt-5">
+        <div className="container py-5 bg-light">
             <Hero/>
         </div>
     );

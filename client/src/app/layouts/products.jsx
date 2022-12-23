@@ -12,7 +12,7 @@ const Products = () => {
     const isLoading = useSelector(getProductsLoadingStatus());
     const product = useSelector(getProductById(prodId));
     return (
-        <div className="container main-container">
+        <div className="container py-5 bg-light">
             <>
                 {prodId ? (
                     edit ? (

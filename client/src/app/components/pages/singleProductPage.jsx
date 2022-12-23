@@ -3,6 +3,7 @@ import propTypes from "prop-types";
 import { addToCart } from "../../store/cart";
 import { useDispatch } from "react-redux";
 import image from "../../assets/thor.jpg";
+import Comments from "../ui/comments";
 
 const SingleProductPage = ({ product }) => {
     const dispatch = useDispatch();
@@ -44,6 +45,9 @@ const SingleProductPage = ({ product }) => {
                             </button>
 
                         </div>
+                    </div>
+                    <div>
+                        <Comments/>
                     </div>
                 </div>
             ) : (

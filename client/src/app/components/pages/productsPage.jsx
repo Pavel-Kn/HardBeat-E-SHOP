@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { getCurrentProductId, getProducts } from "../../store/products";
 import ProductsList from "../ui/productsList";
 import Sort from "../ui/sort";
+
 const ProductsPage = () => {
     const products = useSelector(getProducts());
     const currentProductId = useSelector(getCurrentProductId());
@@ -59,6 +60,7 @@ const ProductsPage = () => {
     const count = filteredProducts.length;
     const sortedProducts = _.orderBy(filteredProducts, [sortBy.path], [sortBy.order]);
     const productsCrop = paginate(sortedProducts, currentPage, pageSize);
+
     const clearFilter = () => {
         setSelectedCategory();
     };
@@ -83,6 +85,7 @@ const ProductsPage = () => {
             <div className="d-flex flex-column">
                 <SearchStatus length={count} />
                 <input
+                    className="w-25"
                     type="text"
                     name="searchQuery"
                     placeholder="Search..."
