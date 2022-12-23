@@ -43,4 +43,6 @@ export const loadCategoriesList = () => async (dispatch, getState) => {
     }
 };
 export const getCategories = () => (state) => state.categories.entities;
+export const getCategoriesLoadingStatus = () => (state) =>
+    state.categories.isLoading;
 export default categoriesReducer;

@@ -86,6 +86,8 @@ export const loadProductsList = () => async (dispatch, getState) => {
 export const getProducts = () => (state) => state.product.entities;
 export const getSearchText = () => (state) => state.product.searchText;
 export const getFilteredProducts = () => (state) => state.product.filtered_products;
+export const getCurrentProductId = () => (state) => state.product.prodId;
+
 export const getProductsLoadingStatus = () => (state) =>
     state.product.isLoading;
 export const getCurrentProductData = (prodId) => (state) => {

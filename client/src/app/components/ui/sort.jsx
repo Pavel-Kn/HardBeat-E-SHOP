@@ -1,33 +1,45 @@
 import React from "react";
-import { getProducts } from "../../store/products";
-import { useSelector } from "react-redux";
-import SearchStatus from "./searchStatus";
+import PropTypes from "prop-types";
+import SelectField from "../common/form/selectField";
 
-const Sort = () => {
-    const filteredList = useSelector(getProducts());
+const Sort = ({ onSort, selectedSort }) => {
+    const sortArray = [
+        { name: "a-z", value: "asc" },
+        { name: "z-a", value: "desc" }
+    ];
+    const sortList = sortArray.map((с) => ({
+        label: с.name,
+        value: с.name
+    }));
+    const handleSort = (item) => {
+        if (selectedSort.path === item.name) {
+            onSort({
+                ...selectedSort,
+                order: selectedSort.order === "asc" ? "desc" : "asc"
+            });
+        } else {
+            onSort({ path: item, order: "asc" });
+        }
+    };
     return (
         <div className='row'>
-            SORT:
-            <SearchStatus length={filteredList.length}/>
-            <h5 className='col-md-5'>{filteredList.length} products found</h5>
             <form className='col-md-5'>
-                <label htmlFor='sort'>Sort by: </label>
-                <select
-                    name='sort'
-                    id='sort'
-                    // value={sort}
-                    // onChange={updateSort}
-                    className='form-select'
-                >
-                    <option value='name-a'>name(a-z)</option>
-                    <option value='name-z'>name(z-a)</option>
-                    <option value='price-lowest'>price(lowest)</option>
-                    <option value='price-highest'>price(highest)</option>
-                </select>
+             <SelectField
+                 name="name"
+                 label="Sort by:"
+                 defaultOption="Choose..."
+                 options={sortList}
+                 onChange={handleSort}
+             />
             </form>
             <hr />
         </div>
     );
+};
+
+Sort.propTypes = {
+    onSort: PropTypes.func.isRequired,
+    selectedSort: PropTypes.object.isRequired
 };
 
 export default Sort;
