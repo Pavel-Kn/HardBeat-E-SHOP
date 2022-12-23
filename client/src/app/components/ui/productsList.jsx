@@ -2,18 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cart";
-import image from "../../assets/thor.jpg";
 import PropTypes from "prop-types";
 
 const ProductsList = ({ products, ...rest }) => {
     const dispatch = useDispatch();
     return (
         <div className="container">
-            <div className="row">
+            <div className="row mx-auto">
                 {products.map((prod) => (
-                    <div className="col-md-4 mb-2" key={prod._id} >
-                        <div className="card">
-                            <img src={image} className="card-img-top" alt="..." />
+                    <div className="col-3" key={prod._id} >
+                        <div className="">
+                            <img src={prod.image} className="card-img-top" alt="..." />
                             <div className="card-body">
                                 <h5>
                                     <Link className="card-title" to={`/products/${prod._id}`} > {prod.name} {prod.model} </Link>

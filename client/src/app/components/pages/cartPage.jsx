@@ -2,7 +2,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { decrementQ, incrementQ, removeFromCart } from "../../store/cart";
-import image from "../../assets/thor.jpg";
 
 export default function Cart() {
     const { cartItems } = useSelector(state => state.cart);
@@ -28,7 +27,7 @@ export default function Cart() {
                                     <tr key={item.id}>
                                         <td>
                                             <div className="d-flex align-items-center">
-                                                <img src={image}
+                                                <img src={item.image}
                                                      width={45}
                                                      height={45}
                                                      className="rounded-circle"

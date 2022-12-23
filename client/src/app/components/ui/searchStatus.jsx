@@ -11,7 +11,7 @@ const SearchStatus = ({ length }) => {
         return "products";
     };
     return (
-        <h4 className="d-flex col-3">
+        <h4 className="col-3 align-content-center align-items-center m-auto">
             <span
                 className={"badge " + (length > 0 ? "bg-secondary" : "bg-danger")}
             >Find:

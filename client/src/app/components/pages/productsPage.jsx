@@ -21,7 +21,7 @@ const ProductsPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState();
     const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
-    const pageSize = 6;
+    const pageSize = 8;
 
     useEffect(() => {
         setCurrentPage(1);
@@ -56,6 +56,7 @@ const ProductsPage = () => {
                 : data;
         return filteredProducts.filter((p) => p._id !== currentProductId);
     }
+
     const filteredProducts = filterUsers(products);
     const count = filteredProducts.length;
     const sortedProducts = _.orderBy(filteredProducts, [sortBy.path], [sortBy.order]);
@@ -66,50 +67,58 @@ const ProductsPage = () => {
     };
 
     return (
-        <div className="d-flex">
-            {categories && !categoriesLoading && (
-                <div className="d-flex flex-column flex-shrink-0 p-3">
-                    <GroupList
-                        selectedItem={selectedCategory}
-                        items={categories}
-                        onItemSelect={handleProfessionSelect}
-                    />
-                    <button
-                        className="btn btn-secondary mt-2"
-                        onClick={clearFilter}
-                    >
-                        Clear
-                    </button>
-                </div>
-            )}
-            <div className="d-flex flex-column">
-                <SearchStatus length={count} />
-                <input
-                    className="w-25"
-                    type="text"
-                    name="searchQuery"
-                    placeholder="Search..."
-                    onChange={handleSearchQuery}
-                    value={searchQuery}
-                />
-                <Sort
-                    onSort={handleSort}
-                    selectedSort={sortBy}
-                />
-                {count > 0 && (
-                    <ProductsList
-                        products={productsCrop}
-                    />
-                )}
-                <div className="d-flex justify-content-center">
-                    <Pagination
-                        itemsCount={count}
-                        pageSize={pageSize}
-                        currentPage={currentPage}
-                        onPageChange={handlePageChange}
-                    />
-                </div>
+        <div className="row mb-4 mb-lg-5">
+            <div className="col-md-8 col-xl-6 text-center mx-auto">
+                <h2 className="fw-bold">Products</h2>
+                <p>Best musical instruments for your band</p>
             </div>
+            <div className="d-flex row">
+                {categories && !categoriesLoading && (
+                    <div className="d-flex flex-column flex-shrink-0 p-3 mt-3 col-2">
+                        <GroupList
+                            selectedItem={selectedCategory}
+                            items={categories}
+                            onItemSelect={handleProfessionSelect}
+                        />
+                        <button
+                            className="btn btn-secondary mt-2"
+                            onClick={clearFilter}
+                        >
+                            Clear
+                        </button>
+                    </div>
+                )}
+                <div className="d-flex flex-column col-10">
+                    <div className="d-flex align-items-center">
+                        <input
+                            className="col-3 m-auto"
+                            type="text"
+                            name="searchQuery"
+                            placeholder="Search..."
+                            onChange={handleSearchQuery}
+                            value={searchQuery}
+                        />
+                        <SearchStatus length={count} />
+                        <Sort
+                            onSort={handleSort}
+                            selectedSort={sortBy}
+                        />
+                    </div>
+                    {count > 0 && (
+                        <ProductsList
+                            products={productsCrop}
+                        />
+                    )}
+                    <div className="d-flex justify-content-center">
+                        <Pagination
+                            itemsCount={count}
+                            pageSize={pageSize}
+                            currentPage={currentPage}
+                            onPageChange={handlePageChange}
+                        />
+                    </div>
+                </div>
+                </div>
         </div>
     );
 };

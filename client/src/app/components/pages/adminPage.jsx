@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, removeProduct } from "../../store/products";
-import image from "../../assets/thor.jpg";
 import { useHistory } from "react-router";
 
 const AdminPage = () => {
@@ -48,7 +47,7 @@ const AdminPage = () => {
                                         <tr key={item._id}>
                                             <td>
                                                 <div className="d-flex align-items-center">
-                                                    <img src={image}
+                                                    <img src={item.image}
                                                          width={45}
                                                          height={45}
                                                          className="rounded-circle"

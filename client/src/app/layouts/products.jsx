@@ -13,7 +13,6 @@ const Products = () => {
     const product = useSelector(getProductById(prodId));
     return (
         <div className="container py-5 bg-light">
-            <>
                 {prodId ? (
                     edit ? (
                             <ProductEditPage prodId={prodId}/>
@@ -23,11 +22,10 @@ const Products = () => {
                         )
                 ) : (
                     <div>
-                        { !isLoading && <ProductsPage/> }
+                        { !isLoading && <ProductsPage /> }
                     </div>
                 )
                     }
-            </>
         </div>
     );
 };

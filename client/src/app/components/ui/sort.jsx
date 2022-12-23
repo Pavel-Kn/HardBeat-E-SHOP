@@ -22,17 +22,15 @@ const Sort = ({ onSort, selectedSort }) => {
         }
     };
     return (
-        <div className='row'>
-            <form className='col-md-5'>
+        <div className="col-3 m-auto ">
+            <form className="w-50">
              <SelectField
                  name="name"
-                 label="Sort by:"
                  defaultOption="Choose..."
                  options={sortList}
                  onChange={handleSort}
              />
             </form>
-            <hr />
         </div>
     );
 };
