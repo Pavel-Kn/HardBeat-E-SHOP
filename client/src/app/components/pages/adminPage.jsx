@@ -37,6 +37,7 @@ const AdminPage = () => {
                                         <th>Name</th>
                                         <th>Category</th>
                                         <th>Quantity</th>
+                                        <th>Rating</th>
                                         <th>Price</th>
                                         <th>Edit</th>
                                         <th>Delete</th>
@@ -63,6 +64,9 @@ const AdminPage = () => {
                                             </td>
                                             <td>
                                                 {item.quantity}
+                                            </td>
+                                            <td>
+                                                {item.rating}
                                             </td>
                                             <td>
                                                 ${item.price}

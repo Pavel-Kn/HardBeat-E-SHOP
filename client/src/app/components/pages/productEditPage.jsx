@@ -15,9 +15,9 @@ const ProductEditPage = ({ prodId }) => {
     const dispatch = useDispatch();
     const [data, setData] = useState();
     const categories = useSelector(getCategories());
-    const categoriesList = categories.map((с) => ({
-        label: с.name,
-        value: с.name
+    const categoriesList = categories.map((c) => ({
+        label: c.name,
+        value: c.name
     }));
 
     const handleSubmit = (data) => {
@@ -57,10 +57,12 @@ const ProductEditPage = ({ prodId }) => {
 
     return (
         <div>
-            <h2> Change product card </h2>
-            <BackHistoryButton />
+            <div className="d-flex flex-md-column m-auto justify-content-center">
+                <h2> Change product card </h2>
+                <BackHistoryButton />
+            </div>
             <div>
-                <div>
+                <div className="d-flex w-50 m-auto">
                     { !isLoading ? (
                         <ProductsForm
                             onSubmit={handleSubmit}
@@ -111,7 +113,7 @@ const ProductEditPage = ({ prodId }) => {
                             <div>
                                 <button
                                     type="submit"
-                                    className="btn btn-primary w-100 mx-auto"
+                                    className="btn btn-primary w-100 mx-auto mb-3"
                                 >
                                     Update
                                 </button>

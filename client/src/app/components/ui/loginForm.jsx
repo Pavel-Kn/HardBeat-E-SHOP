@@ -4,6 +4,7 @@ import TextField from "../common/form/textField";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAuthErrors, login } from "../../store/users";
+import CheckBoxField from "../common/form/checkBoxField";
 
 const LoginForm = () => {
     const [data, setData] = useState({
@@ -23,7 +24,7 @@ const LoginForm = () => {
         }));
     };
 
-    const validatorConfog = {
+    const validatorConfig = {
         email: {
             isRequired: {
                 message: "Электронная почта обязательна для заполнения"
@@ -38,8 +39,9 @@ const LoginForm = () => {
     useEffect(() => {
         validate();
     }, [data]);
+
     const validate = () => {
-        const errors = validator(data, validatorConfog);
+        const errors = validator(data, validatorConfig);
         setErrors(errors);
         return Object.keys(errors).length === 0;
     };
@@ -57,29 +59,44 @@ const LoginForm = () => {
     };
     return (
         <form onSubmit={handleSubmit}>
-            <TextField
-                label="Email"
-                name="email"
-                value={data.email}
-                onChange={handleChange}
-                error={errors.email}
-            />
-            <TextField
-                label="Password"
-                type="password"
-                name="password"
-                value={data.password}
-                onChange={handleChange}
-                error={errors.password}
-            />
+            <div className="mb-3">
+                <TextField
+                    label="Email"
+                    name="email"
+                    value={data.email}
+                    onChange={handleChange}
+                    error={errors.email}
+                />
+            </div>
+            <div className="mb-3">
+                <TextField
+                    label="Password"
+                    type="password"
+                    name="password"
+                    value={data.password}
+                    onChange={handleChange}
+                    error={errors.password}
+                />
+            </div>
+            <div className="mb-3">
+                <CheckBoxField
+                    value={data.stayOn}
+                    onChange={handleChange}
+                    name="stayOn"
+                >
+                    Remember me
+                </CheckBoxField>
+            </div>
             {loginError && <p className="text-danger">{loginError}</p>}
-            <button
-                type="submit"
-                disabled={!isValid}
-                className="btn btn-primary w-100 mx-auto"
-            >
-                Submit
-            </button>
+            <div className="mb-3">
+                <button
+                    type="submit"
+                    disabled={!isValid}
+                    className="btn btn-primary w-100 shadow d-block"
+                >
+                    Submit
+                </button>
+            </div>
         </form>
     );
 };

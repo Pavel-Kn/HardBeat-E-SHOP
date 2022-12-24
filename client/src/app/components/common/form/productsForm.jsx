@@ -65,9 +65,7 @@ const ProductsForm = ({ children, validatorConfig, onSubmit, defaultData }) => {
     });
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>{clonedElements}</form>
-        </div>
+        <form className="form-control shadow" onSubmit={handleSubmit}>{clonedElements}</form>
     );
 };
 

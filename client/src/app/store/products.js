@@ -42,15 +42,6 @@ const productsSlice = createSlice({
         },
         productCreated: (state, action) => {
             state.entities.push(action.payload);
-        },
-        filterProducts: (state, action) => {
-            state.filters = action.payload;
-            state.filtered_products = state.entities.filter((p) => {
-                const { text, category } = state.filters;
-                const textMatch = p.name.toLowerCase().includes(text.toLowerCase());
-                const categoryMatch = category === "all" ? true : p.category === category;
-                return textMatch && categoryMatch;
-            });
         }
     }
 });
@@ -62,9 +53,7 @@ export const {
     productsRequestFiled,
     productUpdateSuccessed,
     productRemoved,
-    productCreated,
-    updateFilters,
-    filterProducts
+    productCreated
 } = actions;
 
 const productUpdateRequested = createAction("product/productUpdateRequested");
@@ -84,8 +73,6 @@ export const loadProductsList = () => async (dispatch, getState) => {
     }
 };
 export const getProducts = () => (state) => state.product.entities;
-export const getSearchText = () => (state) => state.product.searchText;
-export const getFilteredProducts = () => (state) => state.product.filtered_products;
 export const getCurrentProductId = () => (state) => state.product.prodId;
 
 export const getProductsLoadingStatus = () => (state) =>

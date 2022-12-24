@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router";
 import LoginForm from "../components/ui/loginForm";
 import RegisterForm from "../components/ui/registerForm";
+import rnrImage from "../assets/rnr-star.jpg";
 
 const Login = () => {
     const { type } = useParams();
@@ -29,7 +30,7 @@ const Login = () => {
                                 <div className="card">
                                     <div className="card-body text-center flex-column align-items-center">
                                         <div className="">
-                                            <i className="bi bi-person-circle fs-1"></i>
+                                            <img className="rounded-circle" width={100} src={rnrImage} />
                                         </div>
                                         <RegisterForm />
                                         <p>
@@ -57,7 +58,7 @@ const Login = () => {
                                     <div className="card">
                                         <div className="card-body text-center flex-column align-items-center">
                                             <div className="">
-                                                <i className="bi bi-person-circle fs-1"></i>
+                                                <img className="rounded-circle" width={100} src={rnrImage} />
                                             </div>
                             <LoginForm />
                             <p>
@@ -76,4 +77,5 @@ const Login = () => {
         </div>
     );
 };
+
 export default Login;

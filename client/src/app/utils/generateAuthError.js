@@ -1,10 +1,10 @@
-export function generetaAuthError(message) {
+export function generateAuthError(message) {
     switch (message) {
         case "INVALID_PASSWORD":
-            return "Email или пароль введены некорректно";
+            return "Email or password entered incorrectly";
         case "EMAIL_EXISTS":
-            return "Пользователь с таким Email уже существует";
+            return "User with this Email already exists";
         default:
-            return "Слишком много попыток входа. Попробуйте позднее";
+            return "Сheck if the input is correct";
     }
 }

@@ -13,9 +13,9 @@ const ProductCreatePage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch();
     const categories = useSelector(getCategories());
-    const categoriesList = categories.map((с) => ({
-        label: с.name,
-        value: с.name
+    const categoriesList = categories.map((c) => ({
+        label: c.name,
+        value: c.name
     }));
 
     const data = {
@@ -60,10 +60,12 @@ const ProductCreatePage = () => {
 
     return (
         <div>
-            <h2> Create product card </h2>
-            <BackHistoryButton />
+            <div className="d-flex flex-md-column m-auto justify-content-center">
+                <h2> Change product card </h2>
+                <BackHistoryButton />
+            </div>
             <div>
-                <div>
+                <div className="d-flex w-50 m-auto">
                     { !isLoading ? (
                         <ProductsForm
                             onSubmit={handleSubmit}

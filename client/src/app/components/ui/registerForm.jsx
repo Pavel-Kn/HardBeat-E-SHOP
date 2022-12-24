@@ -84,53 +84,65 @@ const RegisterForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <TextField
-                label="Email"
-                name="email"
-                value={data.email}
-                onChange={handleChange}
-                error={errors.email}
-            />
-            <TextField
-                label="Password"
-                type="password"
-                name="password"
-                value={data.password}
-                onChange={handleChange}
-                error={errors.password}
-            />
-            <TextField
-                label="Name"
-                name="name"
-                value={data.name}
-                onChange={handleChange}
-                error={errors.name}
-            />
-            <RadioField
-                options={[
-                    { name: "Male", value: "male" },
-                    { name: "Female", value: "female" }
-                ]}
-                value={data.sex}
-                name="sex"
-                onChange={handleChange}
-                label="What's your gender"
-            />
-            <CheckBoxField
-                value={data.licence}
-                onChange={handleChange}
-                name="licence"
-                error={errors.licence}
-            >
-                Confirm <a>processing of personal data</a>
-            </CheckBoxField>
-            <button
-                type="submit"
-                disabled={!isValid}
-                className="btn btn-primary w-100 mx-auto"
-            >
-                Submit
-            </button>
+            <div className="mb-3">
+                <TextField
+                    label="Email"
+                    name="email"
+                    value={data.email}
+                    onChange={handleChange}
+                    error={errors.email}
+                />
+            </div>
+            <div className="mb-3">
+                <TextField
+                    label="Password"
+                    type="password"
+                    name="password"
+                    value={data.password}
+                    onChange={handleChange}
+                    error={errors.password}
+                />
+            </div>
+            <div className="mb-3">
+                <TextField
+                    label="Name"
+                    name="name"
+                    value={data.name}
+                    onChange={handleChange}
+                    error={errors.name}
+                />
+            </div>
+            <div className="mb-3">
+                <RadioField
+                    options={[
+                        { name: "Male", value: "male" },
+                        { name: "Female", value: "female" }
+                    ]}
+                    value={data.sex}
+                    name="sex"
+                    onChange={handleChange}
+                    label="What's your gender"
+                />
+            </div>
+            <div className="mb-3">
+                <CheckBoxField
+                    value={data.licence}
+                    onChange={handleChange}
+                    name="licence"
+                    error={errors.licence}
+                >
+                    Confirm <a>processing of personal data</a>
+                </CheckBoxField>
+            </div>
+            <div className="mb-3">
+                <button
+                    type="submit"
+                    disabled={!isValid}
+                    className="btn btn-primary w-100 shadow d-block"
+                >
+                    Submit
+                </button>
+            </div>
         </form>
     );
 };

@@ -12,6 +12,7 @@ import AppLoader from "./components/ui/hoc/appLoader";
 import products from "./layouts/products";
 import CartPage from "./components/pages/cartPage";
 import Admin from "./layouts/admin";
+import Footer from "./components/ui/footer";
 
 function App() {
     return (
@@ -30,6 +31,7 @@ function App() {
                     <Route path="/" exact component={Main} />
                     <Redirect to="/" />
                 </Switch>
+                <Footer/>
             </AppLoader>
             <ToastContainer />
         </div>
