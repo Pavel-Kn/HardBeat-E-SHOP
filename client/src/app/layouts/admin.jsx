@@ -6,6 +6,7 @@ import ProductCreatePage from "../components/pages/productCreatePage";
 const Admin = () => {
     const params = useParams();
     const { create } = params;
+
     return (
         <div className="container py-5 bg-light">
             {create ? (

@@ -15,14 +15,15 @@ const ProductEditPage = ({ prodId }) => {
     const dispatch = useDispatch();
     const [data, setData] = useState();
     const categories = useSelector(getCategories());
-    const categoriesList = categories.map((c) => ({
-        label: c.name,
-        value: c.name
+    const categoriesList = categories.map((cat) => ({
+        label: cat.name,
+        value: cat.name
     }));
 
     const handleSubmit = (data) => {
         dispatch(updateProduct(data));
     };
+
     useEffect(() => {
         if (currentProduct && !data) {
             setData({
@@ -57,13 +58,13 @@ const ProductEditPage = ({ prodId }) => {
 
     return (
         <div>
+            <h1 className="d-flex m-auto justify-content-center mb-3"> Edit product card </h1>
             <div className="d-flex flex-md-column m-auto justify-content-center">
-                <h2> Change product card </h2>
                 <BackHistoryButton />
             </div>
             <div>
                 <div className="d-flex w-50 m-auto">
-                    { !isLoading ? (
+                    { !isLoading && categoriesList ? (
                         <ProductsForm
                             onSubmit={handleSubmit}
                             validatorConfig={validatorConfig}
@@ -79,7 +80,7 @@ const ProductEditPage = ({ prodId }) => {
                             />
                             <SelectField
                                 label="Category"
-                                defaultOption="Choose..."
+                                defaultOption="Choose category..."
                                 options={categoriesList}
                                 name="category"
                             />

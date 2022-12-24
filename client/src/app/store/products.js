@@ -72,9 +72,9 @@ export const loadProductsList = () => async (dispatch, getState) => {
         }
     }
 };
+
 export const getProducts = () => (state) => state.product.entities;
 export const getCurrentProductId = () => (state) => state.product.prodId;
-
 export const getProductsLoadingStatus = () => (state) =>
     state.product.isLoading;
 export const getCurrentProductData = (prodId) => (state) => {
@@ -82,6 +82,7 @@ export const getCurrentProductData = (prodId) => (state) => {
         ? state.product.entities.find((p) => p._id === prodId)
         : null;
 };
+
 export const getProductById = (prodId) => (state) => {
     if (state.product.entities) {
         return state.product.entities.find((p) => p._id === prodId);

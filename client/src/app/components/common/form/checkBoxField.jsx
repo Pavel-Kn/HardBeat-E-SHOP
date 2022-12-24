@@ -25,6 +25,7 @@ const CheckBoxField = ({ name, value, onChange, children, error }) => {
         </div>
     );
 };
+
 CheckBoxField.propTypes = {
     name: PropTypes.string,
     value: PropTypes.bool,

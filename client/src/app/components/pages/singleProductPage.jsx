@@ -60,4 +60,5 @@ const SingleProductPage = ({ product }) => {
 SingleProductPage.propTypes = {
     product: propTypes.object
 };
+
 export default SingleProductPage;

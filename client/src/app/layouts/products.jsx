@@ -11,6 +11,7 @@ const Products = () => {
     const { prodId, edit } = params;
     const isLoading = useSelector(getProductsLoadingStatus());
     const product = useSelector(getProductById(prodId));
+
     return (
         <div className="container py-5 bg-light">
                 {prodId ? (

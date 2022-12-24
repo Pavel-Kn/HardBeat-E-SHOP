@@ -2,8 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { getCurrentUserData } from "../../store/users";
+
 const UserCard = ({ user }) => {
     const currentUser = useSelector(getCurrentUserData());
+
     return (
         <div className="card mb-3">
             <div className="card-body">
@@ -23,6 +25,7 @@ const UserCard = ({ user }) => {
         </div>
     );
 };
+
 UserCard.propTypes = {
     user: PropTypes.object
 };

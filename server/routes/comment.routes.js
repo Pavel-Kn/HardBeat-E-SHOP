@@ -3,7 +3,6 @@ const auth = require('../middleware/auth.middleware')
 const Comment = require('../models/Comment')
 const router = express.Router({ mergeParams: true })
 
-// /api/comment
 router
   .route('/')
   .get(auth, async (req, res) => {
@@ -48,6 +47,5 @@ router.delete('/:commentId', auth, async (req, res) => {
     })
   }
 })
-
 
 module.exports = router

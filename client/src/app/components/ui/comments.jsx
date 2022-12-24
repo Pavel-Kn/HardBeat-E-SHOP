@@ -14,19 +14,22 @@ import { useParams } from "react-router-dom";
 const Comments = () => {
     const { prodId } = useParams();
     const dispatch = useDispatch();
+    const isLoading = useSelector(getCommentsLoadingStatus());
+    const comments = useSelector(getComments());
+
     useEffect(() => {
         dispatch(loadCommentsList(prodId));
     }, [prodId]);
-    const isLoading = useSelector(getCommentsLoadingStatus());
 
-    const comments = useSelector(getComments());
     const handleSubmit = (data) => {
         dispatch(createComment({ ...data, pageId: prodId }));
     };
     const handleRemoveComment = (id) => {
         dispatch(removeComment(id));
     };
+
     const sortedComments = orderBy(comments, ["created_at"], ["desc"]);
+
     return (
         <>
             <div className="card mb-2">

@@ -14,7 +14,6 @@ import Sort from "../ui/sort";
 const ProductsPage = () => {
     const products = useSelector(getProducts());
     const currentProductId = useSelector(getCurrentProductId());
-
     const categories = useSelector(getCategories());
     const categoriesLoading = useSelector(getCategoriesLoadingStatus());
     const [currentPage, setCurrentPage] = useState(1);
@@ -31,13 +30,16 @@ const ProductsPage = () => {
         if (searchQuery !== "") setSearchQuery("");
         setSelectedCategory(item);
     };
+
     const handleSearchQuery = ({ target }) => {
         setSelectedCategory(undefined);
         setSearchQuery(target.value);
     };
+
     const handlePageChange = (pageIndex) => {
         setCurrentPage(pageIndex);
     };
+
     const handleSort = (item) => {
         setSortBy(item);
         console.log(item);
@@ -118,10 +120,11 @@ const ProductsPage = () => {
                         />
                     </div>
                 </div>
-                </div>
+            </div>
         </div>
     );
 };
+
 ProductsPage.propTypes = {
     products: PropTypes.array
 };

@@ -26,9 +26,11 @@ const TextAreaField = ({ label, name, value, onChange, error }) => {
         </div>
     );
 };
+
 TextAreaField.defaultProps = {
     type: "text"
 };
+
 TextAreaField.propTypes = {
     label: PropTypes.string,
     type: PropTypes.string,

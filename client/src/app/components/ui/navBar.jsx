@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getIsLoggedIn } from "../../store/users";
 import NavProfile from "./navProfile";
 import brandImg from "../../assets/brand-logo.JPG";
+
 const NavBar = () => {
     const { cartItems } = useSelector(state => state.cart);
     const isLoggedIn = useSelector(getIsLoggedIn());

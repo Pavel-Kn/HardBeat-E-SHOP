@@ -36,6 +36,7 @@ const LoginForm = () => {
             }
         }
     };
+
     useEffect(() => {
         validate();
     }, [data]);
@@ -45,6 +46,7 @@ const LoginForm = () => {
         setErrors(errors);
         return Object.keys(errors).length === 0;
     };
+
     const isValid = Object.keys(errors).length === 0;
 
     const handleSubmit = (e) => {
@@ -57,6 +59,7 @@ const LoginForm = () => {
 
         dispatch(login({ payload: data, redirect }));
     };
+
     return (
         <form onSubmit={handleSubmit}>
             <div className="mb-3">

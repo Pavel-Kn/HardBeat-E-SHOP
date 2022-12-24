@@ -1,7 +1,6 @@
-
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { decrementQ, incrementQ, removeFromCart } from "../../store/cart";
+import { decreaseValue, increaseValue, removeFromCart } from "../../store/cart";
 
 export default function Cart() {
     const { cartItems } = useSelector(state => state.cart);
@@ -40,14 +39,14 @@ export default function Cart() {
                                         </td>
                                         <td>
                                             <i
-                                                onClick={() => dispatch(decrementQ(item))}
+                                                onClick={() => dispatch(decreaseValue(item))}
                                                 style={{ cursor: "pointer" }}
                                                 className="bi bi-dash-circle"></i>
                                             <span className="mx-2">
                                                     {item.quantity}
                                                 </span>
                                             <i
-                                                onClick={() => dispatch(incrementQ(item))}
+                                                onClick={() => dispatch(increaseValue(item))}
                                                 style={{ cursor: "pointer" }}
                                                 className="bi bi-plus-circle"></i>
                                         </td>

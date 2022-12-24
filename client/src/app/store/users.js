@@ -4,6 +4,7 @@ import localStorageService from "../services/localStorage.service";
 import userService from "../services/user.service";
 import { generateAuthError } from "../utils/generateAuthError";
 import history from "../utils/history";
+
 const initialState = localStorageService.getAccessToken()
     ? {
           entities: null,
@@ -31,7 +32,7 @@ const usersSlice = createSlice({
         usersRequested: (state) => {
             state.isLoading = true;
         },
-        usersReceved: (state, action) => {
+        usersReceived: (state, action) => {
             state.entities = action.payload;
             state.dataLoaded = true;
             state.isLoading = false;
@@ -75,7 +76,7 @@ const usersSlice = createSlice({
 const { reducer: usersReducer, actions } = usersSlice;
 const {
     usersRequested,
-    usersReceved,
+    usersReceived,
     usersRequestFiled,
     authRequestFailed,
     authRequestSuccess,
@@ -117,16 +118,18 @@ export const signUp = (payload) =>
             dispatch(authRequestFailed(error.message));
         }
     };
+
 export const logOut = () => (dispatch) => {
     localStorageService.removeAuthData();
     dispatch(userLoggedOut());
     history.push("/");
 };
+
 export const loadUsersList = () => async (dispatch) => {
     dispatch(usersRequested());
     try {
         const { content } = await userService.get();
-        dispatch(usersReceved(content));
+        dispatch(usersReceived(content));
     } catch (error) {
         dispatch(usersRequestFiled(error.message));
     }
@@ -137,15 +140,14 @@ export const getCurrentUserData = () => (state) => {
         ? state.users.entities.find((u) => u._id === state.users.auth.userId)
         : null;
 };
+
 export const getUserById = (userId) => (state) => {
     if (state.users.entities) {
         return state.users.entities.find((u) => u._id === userId);
     }
 };
 
-export const getIsAdmin = () => (state) => state.users.isLoggedIn;
 export const getIsLoggedIn = () => (state) => state.users.isLoggedIn;
-export const getDataStatus = () => (state) => state.users.dataLoaded;
 export const getUsersLoadingStatus = () => (state) => state.users.isLoading;
 export const getCurrentUserId = () => (state) => state.users.auth.userId;
 export const getAuthErrors = () => (state) => state.users.error;

@@ -51,6 +51,7 @@ const SelectField = ({
         </div>
     );
 };
+
 SelectField.propTypes = {
     defaultOption: PropTypes.string,
     label: PropTypes.string,

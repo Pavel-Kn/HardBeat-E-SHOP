@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+
 const SearchStatus = ({ length }) => {
     const renderPhrase = (number) => {
         const lastOne = Number(number.toString().slice(-1));
@@ -10,6 +11,7 @@ const SearchStatus = ({ length }) => {
         if ([2, 3, 4].indexOf(lastOne) >= 0) return "products";
         return "products";
     };
+
     return (
         <h4 className="col-3 align-content-center align-items-center m-auto">
             <span
@@ -22,6 +24,7 @@ const SearchStatus = ({ length }) => {
         </h4>
     );
 };
+
 SearchStatus.propTypes = {
     length: PropTypes.number
 };

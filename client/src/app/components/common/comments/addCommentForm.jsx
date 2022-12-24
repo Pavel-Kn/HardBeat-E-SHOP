@@ -12,16 +12,16 @@ const AddCommentForm = ({ onSubmit }) => {
             [target.name]: target.value
         }));
     };
-    const validatorConfog = {
+    const validatorConfig = {
         content: {
             isRequired: {
-                message: "Сообщение не может быть пустым"
+                message: "Message cannot be empty"
             }
         }
     };
 
     const validate = () => {
-        const errors = validator(data, validatorConfog);
+        const errors = validator(data, validatorConfig);
 
         setErrors(errors);
         return Object.keys(errors).length === 0;
@@ -36,7 +36,6 @@ const AddCommentForm = ({ onSubmit }) => {
         const isValid = validate();
         if (!isValid) return;
         onSubmit(data);
-        console.log(data);
         clearForm();
     };
 
@@ -48,11 +47,11 @@ const AddCommentForm = ({ onSubmit }) => {
                     value={data.content || ""}
                     onChange={handleChange}
                     name="content"
-                    label="Сообщение"
+                    label="review"
                     error={errors.content}
                 />
                 <div className="d-flex justify-content-end">
-                    <button className="btn btn-primary">Опубликовать</button>
+                    <button className="btn btn-primary">Post</button>
                 </div>
             </form>
         </div>

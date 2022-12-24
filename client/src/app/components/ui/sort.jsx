@@ -7,10 +7,12 @@ const Sort = ({ onSort, selectedSort }) => {
         { name: "a-z", value: "asc" },
         { name: "z-a", value: "desc" }
     ];
-    const sortList = sortArray.map((с) => ({
-        label: с.name,
-        value: с.name
+
+    const sortList = sortArray.map((cat) => ({
+        label: cat.name,
+        value: cat.name
     }));
+
     const handleSort = (item) => {
         if (selectedSort.path === item.name) {
             onSort({
@@ -21,6 +23,7 @@ const Sort = ({ onSort, selectedSort }) => {
             onSort({ path: item, order: "asc" });
         }
     };
+
     return (
         <div className="col-3 m-auto ">
             <form className="w-50">

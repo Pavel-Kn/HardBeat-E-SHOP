@@ -1,4 +1,5 @@
 import httpService from "./http.service";
+
 const commentEndpoint = "comment/";
 
 const commentService = {
@@ -20,4 +21,5 @@ const commentService = {
         return data;
     }
 };
+
 export default commentService;

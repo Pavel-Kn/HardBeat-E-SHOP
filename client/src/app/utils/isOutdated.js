@@ -4,4 +4,5 @@ function isOutdated(date) {
     }
     return false;
 }
+
 export default isOutdated;

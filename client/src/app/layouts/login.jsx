@@ -9,6 +9,7 @@ const Login = () => {
     const [formType, setFormType] = useState(
         type === "register" ? type : "login"
     );
+
     const toggleFormType = (params) => {
         setFormType((prevState) =>
             prevState === "register" ? "login" : "register"
@@ -16,7 +17,7 @@ const Login = () => {
     };
 
     return (
-        <div className="container mt-5">
+        <div className="container py-5 bg-light">
                     {formType === "register" ? (
                         <>
                         <div className="row mb-4 mb-lg-5 ">
@@ -33,15 +34,14 @@ const Login = () => {
                                             <img className="rounded-circle" width={100} src={rnrImage} />
                                         </div>
                                         <RegisterForm />
-                                        <p>
-                                            Already have account?{" "}
+                                        <p>Already have account?{" "}
                                             <a role="button" onClick={toggleFormType}>
                                                 {" "}
                                                 Sign In
                                             </a>
                                         </p>
                                     </div>
-                            </div>
+                                </div>
                             </div>
                         </div>
                         </>
@@ -60,14 +60,13 @@ const Login = () => {
                                             <div className="">
                                                 <img className="rounded-circle" width={100} src={rnrImage} />
                                             </div>
-                            <LoginForm />
-                            <p>
-                                Dont have account?{" "}
-                                <a role="button" onClick={toggleFormType}>
-                                    {" "}
-                                    Sign Up
-                                </a>
-                            </p>
+                                            <LoginForm />
+                                            <p>Dont have account?{" "}
+                                                <a role="button" onClick={toggleFormType}>
+                                                    {" "}
+                                                    Sign Up
+                                                </a>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

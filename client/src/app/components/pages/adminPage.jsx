@@ -7,9 +7,11 @@ const AdminPage = () => {
     const history = useHistory();
     const productsList = useSelector(getProducts());
     const dispatch = useDispatch();
+
     const handleRemoveProduct = (prodId) => {
         dispatch(removeProduct(prodId));
     };
+
     const editProduct = (prodId) => {
         history.push(`products/${prodId}/edit`);
     };

@@ -8,4 +8,5 @@ const categoryService = {
         return req.data;
     }
 };
+
 export default categoryService;

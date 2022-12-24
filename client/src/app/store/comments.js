@@ -1,5 +1,6 @@
 import { createAction, createSlice } from "@reduxjs/toolkit";
 import commentService from "../services/comment.service";
+
 const commentsSlice = createSlice({
     name: "comments",
     initialState: {
@@ -51,6 +52,7 @@ export const loadCommentsList = (userId) => async (dispatch) => {
         dispatch(commentsRequestFiled(error.message));
     }
 };
+
 export const createComment = (payload) => async (dispatch, getState) => {
     dispatch(addCommentRequested());
     try {
@@ -60,6 +62,7 @@ export const createComment = (payload) => async (dispatch, getState) => {
         dispatch(commentsRequestFiled(error.message));
     }
 };
+
 export const removeComment = (commentId) => async (dispatch) => {
     dispatch(removeCommentRequested());
     try {

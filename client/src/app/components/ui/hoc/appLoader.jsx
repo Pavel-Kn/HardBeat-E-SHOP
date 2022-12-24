@@ -13,10 +13,12 @@ const AppLoader = ({ children }) => {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(getIsLoggedIn());
     const usersStatusLoading = useSelector(getUsersLoadingStatus());
+
     useEffect(() => {
         dispatch(loadProductsList());
         dispatch(loadCategoriesList());
     }, []);
+
     useEffect(() => {
         if (isLoggedIn) {
             dispatch(loadUsersList());
@@ -32,4 +34,5 @@ AppLoader.propTypes = {
         PropTypes.node
     ])
 };
+
 export default AppLoader;

@@ -67,6 +67,50 @@
   },
   {
     "name": "Fender",
+    "model": "Precision Bass",
+    "category": "Bass guitars",
+    "price": 4999,
+    "image": "https://mirm.ru/info/img_1200/CNT67791.jpg",
+    "descriptionFull": "description Full",
+    "descriptionShort": "description Short",
+    "quantity": 3,
+    "rating": 5
+  },
+  {
+    "name": "Yamaha",
+    "model": "TRB1006J",
+    "category": "Bass guitars",
+    "price": 9999,
+    "image": "https://mirm.ru/info/img_1200/CNT78477.jpg",
+    "descriptionFull": "description Full",
+    "descriptionShort": "description Short",
+    "quantity": 1,
+    "rating": 5
+  },
+  {
+    "name": "Ibanez",
+    "model": "SR5006",
+    "category": "Bass guitars",
+    "price": 8999,
+    "image": "https://mirm.ru/info/img_1200/CNT69105.jpg",
+    "descriptionFull": "description Full",
+    "descriptionShort": "description Short",
+    "quantity": 1,
+    "rating": 5
+  },
+  {
+    "name": "Warwick",
+    "model": "Corvette $$ 5",
+    "category": "Bass guitars",
+    "price": 7799,
+    "image": "https://mirm.ru/info/img_1200/CNT87256.jpg",
+    "descriptionFull": "description Full",
+    "descriptionShort": "description Short",
+    "quantity": 2,
+    "rating": 5
+  },
+  {
+    "name": "Fender",
     "model": "Stratocaster",
     "category": "Electric guitars",
     "price": 6599,
@@ -129,6 +173,39 @@
     "descriptionFull": "descriptionFull",
     "descriptionShort": "descriptionShort",
     "quantity": 9,
+    "rating": 5
+  },
+  {
+    "name": "Jackson",
+    "model": "USA Select B8 Walnut Stain",
+    "category": "Electric guitars",
+    "price": 9599,
+    "image": "https://mirm.ru/info/img_1200/CNT67995.jpg",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 2,
+    "rating": 5
+  },
+  {
+    "name": "Music Man",
+    "model": "Cutlass",
+    "category": "Electric guitars",
+    "price": 4599,
+    "image": "https://mirm.ru/info/img_1200/CNT91411.jpg",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 2,
+    "rating": 3
+  },
+  {
+    "name": "Solar",
+    "model": "Guitars V2.7C",
+    "category": "Electric guitars",
+    "price": 6599,
+    "image": "https://mirm.ru/info/img_1200/CNT82037.jpg",
+    "descriptionFull": "descriptionFull",
+    "descriptionShort": "descriptionShort",
+    "quantity": 7,
     "rating": 5
   },
   {

@@ -13,10 +13,11 @@ const ProductCreatePage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch();
     const categories = useSelector(getCategories());
-    const categoriesList = categories.map((c) => ({
-        label: c.name,
-        value: c.name
+    const categoriesList = categories.map((cat) => ({
+        label: cat.name,
+        value: cat.name
     }));
+    console.log(categoriesList);
 
     const data = {
         name: "",
@@ -60,13 +61,13 @@ const ProductCreatePage = () => {
 
     return (
         <div>
+            <h1 className="d-flex m-auto justify-content-center mb-3"> Create product card </h1>
             <div className="d-flex flex-md-column m-auto justify-content-center">
-                <h2> Change product card </h2>
                 <BackHistoryButton />
             </div>
             <div>
                 <div className="d-flex w-50 m-auto">
-                    { !isLoading ? (
+                    { !isLoading && categoriesList ? (
                         <ProductsForm
                             onSubmit={handleSubmit}
                             validatorConfig={validatorConfig}
@@ -82,7 +83,7 @@ const ProductCreatePage = () => {
                             />
                             <SelectField
                                 label="Category"
-                                defaultOption="Choose..."
+                                defaultOption="Choose category..."
                                 options={categoriesList}
                                 name="category"
                             />

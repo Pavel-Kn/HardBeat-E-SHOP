@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 
 const ProductsList = ({ products, ...rest }) => {
     const dispatch = useDispatch();
+
     return (
         <div className="container">
             <div className="row row-cols-1 row-cols-md-3 g-4">
