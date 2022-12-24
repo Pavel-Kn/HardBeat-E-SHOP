@@ -6,18 +6,20 @@ import {
     getUsersLoadingStatus,
     loadUsersList
 } from "../../../store/users";
-// import { loadProductsList } from "../../../store/products";
 import { loadCategoriesList } from "../../../store/categories";
+import { loadProductsList } from "../../../store/products";
 
 const AppLoader = ({ children }) => {
     const dispatch = useDispatch();
     const isLoggedIn = useSelector(getIsLoggedIn());
     const usersStatusLoading = useSelector(getUsersLoadingStatus());
     useEffect(() => {
+        dispatch(loadProductsList());
+        dispatch(loadCategoriesList());
+    }, []);
+    useEffect(() => {
         if (isLoggedIn) {
             dispatch(loadUsersList());
-            // dispatch(loadProductsList());
-            dispatch(loadCategoriesList());
         }
     }, [isLoggedIn]);
     if (usersStatusLoading) return "loading";

@@ -1,15 +1,17 @@
 import React from "react";
+import heroImage2 from "../../assets/hero-top.jpg";
 import { Link } from "react-router-dom";
-import heroImage from "../../assets/hero-top.jpg";
 
 const Hero = () => {
     return (
-        <div className="bg-image p-5 text-center">
-            <img width={1200} src={heroImage}/>
-            <h1 className="text-dark"> Music is our life, live with music </h1>
-            <Link to="/products" className="btn btn-info">
-                SHOP NOW
-            </Link>
+        <div className="p-5 mb-4 bg-light rounded-3" style={{ backgroundImage: `url(${heroImage2})`, backgroundSize: "cover", height: "30rem" }}>
+            <div className="container py-5 bg-light bg-opacity-25" >
+                <h2 className="display-6 fw-bold text-light">Music is our life, live with music</h2>
+                <p className="lead text-light">We offer a variety of products and services</p>
+                <Link to="/products" className="btn btn-info">
+                    SHOP NOW
+                </Link>
+            </div>
         </div>
     );
 };

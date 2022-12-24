@@ -8,10 +8,10 @@ const ProductsList = ({ products, ...rest }) => {
     const dispatch = useDispatch();
     return (
         <div className="container">
-            <div className="row mx-auto">
+            <div className="row row-cols-1 row-cols-md-3 g-4">
                 {products.map((prod) => (
-                    <div className="col-3" key={prod._id} >
-                        <div className="">
+                    <div className="card-group" key={prod._id} >
+                        <div className="card-100">
                             <img src={prod.image} className="card-img-top" alt="..." />
                             <div className="card-body">
                                 <h5>

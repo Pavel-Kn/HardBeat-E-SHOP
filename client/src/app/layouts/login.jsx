@@ -16,23 +16,49 @@ const Login = () => {
 
     return (
         <div className="container mt-5">
-            <div className="row">
-                <div className="col-md-6 offset-md-3 shadow p-4">
                     {formType === "register" ? (
                         <>
-                            <h3 className="mb-4">Register</h3>
-                            <RegisterForm />
-                            <p>
-                                Already have account?{" "}
-                                <a role="button" onClick={toggleFormType}>
-                                    {" "}
-                                    Sign In
-                                </a>
-                            </p>
+                        <div className="row mb-4 mb-lg-5 ">
+                            <div className="col-md-8 col-xl-6 text-center mx-auto">
+                                <h1 className="fw-bold">Welcome</h1>
+                                <h3 className="text-info">Sign Up</h3>
+                            </div>
+                        </div>
+                        <div className="row d-flex justify-content-center">
+                            <div className="col-md-6 col-xl-4">
+                                <div className="card">
+                                    <div className="card-body text-center flex-column align-items-center">
+                                        <div className="">
+                                            <i className="bi bi-person-circle fs-1"></i>
+                                        </div>
+                                        <RegisterForm />
+                                        <p>
+                                            Already have account?{" "}
+                                            <a role="button" onClick={toggleFormType}>
+                                                {" "}
+                                                Sign In
+                                            </a>
+                                        </p>
+                                    </div>
+                            </div>
+                            </div>
+                        </div>
                         </>
                     ) : (
                         <>
-                            <h3 className="mb-4">Login</h3>
+                            <div className="row mb-4 mb-lg-5 ">
+                                <div className="col-md-8 col-xl-6 text-center mx-auto">
+                                    <h1 className="fw-bold">Welcome back</h1>
+                                    <h3 className="text-info">Sign In</h3>
+                                </div>
+                            </div>
+                            <div className="row d-flex justify-content-center">
+                                <div className="col-md-6 col-xl-4">
+                                    <div className="card">
+                                        <div className="card-body text-center flex-column align-items-center">
+                                            <div className="">
+                                                <i className="bi bi-person-circle fs-1"></i>
+                                            </div>
                             <LoginForm />
                             <p>
                                 Dont have account?{" "}
@@ -41,10 +67,12 @@ const Login = () => {
                                     Sign Up
                                 </a>
                             </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </>
                     )}
-                </div>
-            </div>
         </div>
     );
 };

@@ -21,7 +21,7 @@ const ProductsPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState();
     const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
-    const pageSize = 8;
+    const pageSize = 9;
 
     useEffect(() => {
         setCurrentPage(1);
@@ -72,7 +72,7 @@ const ProductsPage = () => {
                 <h2 className="fw-bold">Products</h2>
                 <p>Best musical instruments for your band</p>
             </div>
-            <div className="d-flex row">
+            <div className="d-flex flex-row justify-content-center">
                 {categories && !categoriesLoading && (
                     <div className="d-flex flex-column flex-shrink-0 p-3 mt-3 col-2">
                         <GroupList
