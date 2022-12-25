@@ -1,36 +1,32 @@
-// 1. У любого пользователя будет как минимум в БД qual and prof
-// 2. они будут mock данными
+const Product = require('../models/Product')
+const Category = require('../models/Category')
+const productsMock = require('../mock/products.json')
+const categoriesMock = require('../mock/categories.json')
 
-// const Profession = require('../models/Profession')
-// const Quality = require('../models/Quality')
-// const professionMock = require('../mock/professions.json')
-// const qualitiesMock = require('../mock/qualities.json')
+module.exports = async () => {
+  const products = await Product.find()
+  if (products.length !== productsMock.length) {
+    await createInitialEntity(Product, productsMock)
+  }
 
-
-// module.exports = async () => {
-//     const professions = await Profession.find()
-//     if (professions.length !== professionMock.length) {
-//         await createInitialEntity(Profession, professionMock)
-//     }
-
-//     const qualities = await Quality.find()
-//     if (qualities.length !== qualitiesMock.length) {
-//         await createInitialEntity(Quality, qualitiesMock)
-//     }
-// }
+  const categories = await Category.find()
+  if (categories.length !== categoriesMock.length) {
+    await createInitialEntity(Category, categoriesMock)
+  }
+}
 
 async function createInitialEntity(Model, data) {
-    await Model.collection.drop()
-    return Promise.all(
-        data.map(async item => {
-            try {
-                delete item._id
-                const newItem = new Model(item)
-                await newItem.save()
-                return newItem
-            } catch (e) {
-                return e
-            }
-        })
-    )
+  await Model.collection.drop()
+  return Promise.all(
+    data.map(async item => {
+      try {
+        delete item._id
+        const newItem = new Model(item)
+        await newItem.save()
+        return newItem
+      } catch (e) {
+        return e
+      }
+    })
+  )
 }
