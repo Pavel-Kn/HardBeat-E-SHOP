@@ -114,7 +114,7 @@ const ProductsPage = () => {
                                 products={productsCrop}
                             />
                         )}
-                        <div className="d-flex justify-content-center">
+                        <div className="d-flex justify-content-center mt-4 ">
                             <Pagination
                                 itemsCount={count}
                                 pageSize={pageSize}
