@@ -47,7 +47,7 @@ const NavBar = () => {
                                 aria-current="page"
                                 to="/login"
                             >
-                                <div className="mt-1">Login</div>
+                                <div className="    m-3">Login</div>
                             </Link>
                         )}
                     </div>
