@@ -47,7 +47,6 @@ const ProductsPage = () => {
 
     const handleSort = (item) => {
         setSortBy(item);
-        console.log(item);
     };
 
     function filterUsers(data) {
@@ -79,8 +78,8 @@ const ProductsPage = () => {
                 <h2 className="fw-bold">Products</h2>
                 <p>Best musical instruments for your band</p>
             </div>
+            {isCategoriesReceived && isProductsReceived ? (
             <div className="d-flex flex-row justify-content-center">
-                {isCategoriesReceived ? (
                     <div className="d-flex flex-column flex-shrink-0 p-3 mt-3 col-2">
                         <GroupList
                             selectedItem={selectedCategory}
@@ -94,10 +93,6 @@ const ProductsPage = () => {
                             Clear
                         </button>
                     </div>
-                    ) : (
-                        <LoadingSpinner/>
-                )}
-                {isProductsReceived ? (
                     <div className="d-flex flex-column col-10">
                         <div className="d-flex align-items-center">
                             <input
@@ -128,10 +123,10 @@ const ProductsPage = () => {
                             />
                         </div>
                     </div>
-                ) : (
-                    <LoadingSpinner/>
-                )}
             </div>
+            ) : (
+                <LoadingSpinner/>
+            )}
         </div>
     );
 };
