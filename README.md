@@ -4,3 +4,5 @@
 
 # start server: npm i / npm run serve
 # start client npm i / npm start
+
+info HardBeat-E-SHOP/client/src/app/config.json change port localhost:8080
