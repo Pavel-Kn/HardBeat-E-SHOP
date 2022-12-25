@@ -10,7 +10,7 @@ const NavProfile = () => {
         setOpen((prevState) => !prevState);
     };
 
-    if (!currentUser) return "loading";
+    if (!currentUser) return <div className="mt-1 text-danger">clear localstorage</div>;
     return (
         <div className="dropdown " onClick={toggleMenu}>
             <div className="btn dropdown-toggle d-flex align-items-center">

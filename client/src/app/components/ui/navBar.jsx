@@ -43,11 +43,11 @@ const NavBar = () => {
                             <NavProfile />
                         ) : (
                             <Link
-                                className="nav-link "
+                                className="nav-link text-light"
                                 aria-current="page"
                                 to="/login"
                             >
-                                Login
+                                <div className="mt-1">Login</div>
                             </Link>
                         )}
                     </div>
