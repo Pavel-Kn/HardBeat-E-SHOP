@@ -12,6 +12,7 @@ const AddCommentForm = ({ onSubmit }) => {
             [target.name]: target.value
         }));
     };
+
     const validatorConfig = {
         content: {
             isRequired: {
@@ -31,6 +32,7 @@ const AddCommentForm = ({ onSubmit }) => {
         setData({});
         setErrors({});
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const isValid = validate();
@@ -41,13 +43,12 @@ const AddCommentForm = ({ onSubmit }) => {
 
     return (
         <div>
-            <h2>New comment</h2>
             <form onSubmit={handleSubmit}>
                 <TextAreaField
                     value={data.content || ""}
                     onChange={handleChange}
                     name="content"
-                    label="review"
+                    label="leave your review about the product:"
                     error={errors.content}
                 />
                 <div className="d-flex justify-content-end">
@@ -57,6 +58,7 @@ const AddCommentForm = ({ onSubmit }) => {
         </div>
     );
 };
+
 AddCommentForm.propTypes = {
     onSubmit: PropTypes.func
 };

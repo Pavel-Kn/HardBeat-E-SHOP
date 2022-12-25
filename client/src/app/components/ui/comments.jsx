@@ -10,6 +10,7 @@ import {
 } from "../../store/comments";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import LoadingSpinner from "./loadingSpinner";
 
 const Comments = () => {
     const { prodId } = useParams();
@@ -48,7 +49,7 @@ const Comments = () => {
                                 onRemove={handleRemoveComment}
                             />
                         ) : (
-                            "loading..."
+                            <LoadingSpinner/>
                         )}
                     </div>
                 </div>

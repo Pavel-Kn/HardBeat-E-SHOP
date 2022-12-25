@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import ProductsForm from "../common/form/productsForm";
 import SelectField from "../common/form/selectField";
 import { getCategories } from "../../store/categories";
+import LoadingSpinner from "../ui/loadingSpinner";
 
 const ProductCreatePage = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +18,6 @@ const ProductCreatePage = () => {
         label: cat.name,
         value: cat.name
     }));
-    console.log(categoriesList);
 
     const data = {
         name: "",
@@ -124,7 +124,7 @@ const ProductCreatePage = () => {
                             </div>
                         </ProductsForm>
                     ) : (
-                        "Loading..."
+                        <LoadingSpinner/>
                     )}
                 </div>
             </div>

@@ -7,12 +7,15 @@ import SearchStatus from "../ui/searchStatus";
 import _ from "lodash";
 import { getCategories, getCategoriesLoadingStatus } from "../../store/categories";
 import { useSelector } from "react-redux";
-import { getCurrentProductId, getProducts } from "../../store/products";
+import { getCurrentProductId, getProducts, getProductsLoadingStatus } from "../../store/products";
 import ProductsList from "../ui/productsList";
 import Sort from "../ui/sort";
+import useLoading from "../../utils/useLoading";
+import LoadingSpinner from "../ui/loadingSpinner";
 
 const ProductsPage = () => {
     const products = useSelector(getProducts());
+    const productsLoading = useSelector(getProductsLoadingStatus());
     const currentProductId = useSelector(getCurrentProductId());
     const categories = useSelector(getCategories());
     const categoriesLoading = useSelector(getCategoriesLoadingStatus());
@@ -21,6 +24,8 @@ const ProductsPage = () => {
     const [selectedCategory, setSelectedCategory] = useState();
     const [sortBy, setSortBy] = useState({ path: "name", order: "asc" });
     const pageSize = 9;
+    const isProductsReceived = useLoading(products, productsLoading);
+    const isCategoriesReceived = useLoading(categories, categoriesLoading);
 
     useEffect(() => {
         setCurrentPage(1);
@@ -75,7 +80,7 @@ const ProductsPage = () => {
                 <p>Best musical instruments for your band</p>
             </div>
             <div className="d-flex flex-row justify-content-center">
-                {categories && !categoriesLoading && (
+                {isCategoriesReceived ? (
                     <div className="d-flex flex-column flex-shrink-0 p-3 mt-3 col-2">
                         <GroupList
                             selectedItem={selectedCategory}
@@ -89,37 +94,43 @@ const ProductsPage = () => {
                             Clear
                         </button>
                     </div>
+                    ) : (
+                        <LoadingSpinner/>
                 )}
-                <div className="d-flex flex-column col-10">
-                    <div className="d-flex align-items-center">
-                        <input
-                            className="col-3 m-auto"
-                            type="text"
-                            name="searchQuery"
-                            placeholder="Search..."
-                            onChange={handleSearchQuery}
-                            value={searchQuery}
-                        />
-                        <SearchStatus length={count} />
-                        <Sort
-                            onSort={handleSort}
-                            selectedSort={sortBy}
-                        />
+                {isProductsReceived ? (
+                    <div className="d-flex flex-column col-10">
+                        <div className="d-flex align-items-center">
+                            <input
+                                className="col-3 m-auto"
+                                type="text"
+                                name="searchQuery"
+                                placeholder="Search..."
+                                onChange={handleSearchQuery}
+                                value={searchQuery}
+                            />
+                            <SearchStatus length={count} />
+                            <Sort
+                                onSort={handleSort}
+                                selectedSort={sortBy}
+                            />
+                        </div>
+                        {count > 0 && (
+                            <ProductsList
+                                products={productsCrop}
+                            />
+                        )}
+                        <div className="d-flex justify-content-center">
+                            <Pagination
+                                itemsCount={count}
+                                pageSize={pageSize}
+                                currentPage={currentPage}
+                                onPageChange={handlePageChange}
+                            />
+                        </div>
                     </div>
-                    {count > 0 && (
-                        <ProductsList
-                            products={productsCrop}
-                        />
-                    )}
-                    <div className="d-flex justify-content-center">
-                        <Pagination
-                            itemsCount={count}
-                            pageSize={pageSize}
-                            currentPage={currentPage}
-                            onPageChange={handlePageChange}
-                        />
-                    </div>
-                </div>
+                ) : (
+                    <LoadingSpinner/>
+                )}
             </div>
         </div>
     );

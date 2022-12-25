@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import UserCard from "../ui/userCard";
 import { useSelector } from "react-redux";
 import { getUserById } from "../../store/users";
+import LoadingSpinner from "../ui/loadingSpinner";
 
 const UserPage = ({ userId }) => {
     const user = useSelector(getUserById(userId));
@@ -18,7 +19,7 @@ const UserPage = ({ userId }) => {
             </div>
         );
     } else {
-        return <h1>Loading</h1>;
+        return <LoadingSpinner/>;
     }
 };
 

@@ -53,6 +53,7 @@ const Comment = ({
         </div>
     );
 };
+
 Comment.propTypes = {
     content: PropTypes.string,
     edited_at: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

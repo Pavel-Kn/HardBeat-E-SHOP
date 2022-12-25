@@ -15,7 +15,7 @@ const SearchStatus = ({ length }) => {
     return (
         <h4 className="col-3 align-content-center align-items-center m-auto">
             <span
-                className={"badge " + (length > 0 ? "bg-secondary" : "bg-danger")}
+                className={"badge text-dark bg-opacity-25 " + (length > 0 ? "bg-info" : "bg-danger")}
             >Find:
                 {length > 0
                     ? ` ${length + " " + renderPhrase(length)}`

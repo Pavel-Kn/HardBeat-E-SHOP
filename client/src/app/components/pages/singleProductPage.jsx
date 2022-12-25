@@ -3,6 +3,7 @@ import propTypes from "prop-types";
 import { addToCart } from "../../store/cart";
 import { useDispatch } from "react-redux";
 import Comments from "../ui/comments";
+import LoadingSpinner from "../ui/loadingSpinner";
 
 const SingleProductPage = ({ product }) => {
     const dispatch = useDispatch();
@@ -14,16 +15,12 @@ const SingleProductPage = ({ product }) => {
                                 {product.image
                                     ? (
                                         <div className="">
-                                            <img className="" width={400} alt={product.name} src={product.image} />
+                                            <img className="" width={500} alt={product.name} src={product.image} />
                                         </div>
                                     ) : (
                                         <img className="rounded-circle" width={300} alt={product.name}/>
                                     )}
-                            </div>
-                            <div className="col-6">
-                                <div className="mx-auto">
                                     <h2 className="fw-bold">{product.name} {product.model}</h2>
-                                </div>
                                 <p className="card-text"><b>Category:</b> {product.category}</p>
                                 <p className="card-text description">
                                     {product.descriptionFull}
@@ -46,13 +43,14 @@ const SingleProductPage = ({ product }) => {
                                     <i className="bi bi-cart-check"></i> add to cart
                                 </button>
                             </div>
-                    </div>
-                    <div className="mt-4 w-50">
-                        <Comments/>
+                        <div className="col-6">
+                                <h3>Product Review</h3>
+                                <Comments/>
+                        </div>
                     </div>
                 </div>
             ) : (
-                "loading..."
+                <LoadingSpinner/>
             )
     );
 };

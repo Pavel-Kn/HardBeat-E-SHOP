@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, removeProduct } from "../../store/products";
 import { useHistory } from "react-router";
+import LoadingSpinner from "../ui/loadingSpinner";
 
 const AdminPage = () => {
     const history = useHistory();
@@ -93,7 +94,7 @@ const AdminPage = () => {
                     </div>
                 </div>
             ) : (
-                "Loading..."
+                <LoadingSpinner/>
             )}
         </div>
     );

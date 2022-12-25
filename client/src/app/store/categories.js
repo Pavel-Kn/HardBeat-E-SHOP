@@ -5,7 +5,7 @@ import isOutdated from "../utils/isOutdated";
 const categoriesSlice = createSlice({
     name: "categories",
     initialState: {
-        entities: null,
+        entities: [],
         isLoading: true,
         error: null,
         lastFetch: null
